@@ -3,9 +3,7 @@
     <main>
      <section>
         <article>
-      <h1>Welcome to the Home Page</h1>
-      <P> click to play the games <P>
-        <button onclick ="location.href='index2.php'">play</button>
+      <h1>Menu</h1>
         <article>
      </section>
     <main>

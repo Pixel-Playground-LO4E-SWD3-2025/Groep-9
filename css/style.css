@@ -7,9 +7,19 @@ body{
     flex-direction: column;
 
 }
+section{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 102vh;
+    background-clip: border-box;
+}
 h1{
     font-size: 3rem;
     color: hsla(0, 0%, 0%, 0.842);
+    text-align: center;
+}
+p{
     text-align: center;
 }
 .spel{
@@ -38,7 +48,7 @@ h1{
     text-align: center;
 }
 .score{
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     text-align: center;
 }
 .greenText, #playerscoredisplay{
@@ -49,9 +59,12 @@ h1{
 }
 nav{
     background-color: black;
-    padding: 30px;
-    width: 100vw;
+    padding: 20px;
+    width: 98vw;
     text-align: center;
+    position: fixed;
+    top: 0;
+    left: 0;
 }
 nav a {
     padding-left: 30px;
@@ -60,3 +73,10 @@ nav a {
 nav a:hover{
     color: #50c878ef;
 }
+footer{
+  background-color: black;
+  width: 98vw;
+  padding: 100px;
+}
+
+    
