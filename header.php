@@ -12,7 +12,7 @@
 </head>
 <header>
     <nav> 
-     <a href="index(home).php">Home</a>
+     <a href="index.php">Home</a>
      <a href="Games.php">Games</a>
      <a href="#">Over ons</a>
      <a href="#">Contacten</a>
