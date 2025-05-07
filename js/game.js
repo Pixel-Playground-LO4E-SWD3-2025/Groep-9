@@ -1,37 +1,41 @@
-const gokken = ["steen","papier","schaar"];
+const gokken = ["Steen","Papier","Schaar"];
 const playercontrol = document.getElementById("player");
 const computercontrol = document.getElementById("computer");
 const gelijkcontrol = document.getElementById("resultaat");
-const playerscore = document.getElementById("playerscoredisplay");
-const computerscore = document.getElementById("computerscoredisplay");
+const playerScoreDisplay = document.getElementById("playerScoreDisplay");
+const computerScoreDisplay = document.getElementById("computerScoreDisplay");
 
+let playerScore =0;
+let computerScore =0;
 
 function Game(playerChoice){
-    const computer = gokken[Math.floor(Math.random() * 3)];
+    console.log(playerChoice);
+    const ComputerChoice = gokken[Math.floor(Math.random() * 3)];
     let = result = "";
 
-    if(playerChoice === computer){
-        result = "HET IS GELIJKSPEL!"
+    if(playerChoice === ComputerChoice){
+        result = "HET IS GELIJKSPEL!";
     }
     else{
         switch(playerChoice){
             case "Steen":
-                (computer === "steen") ? "JE HEBT GEWONNEN!" : "JE HEBT VERLOREN!";
+               result = (ComputerChoice === "Papier") ? "JE HEBT GEWONNEN!" : "JE HEBT VERLOREN!";
             break;
 
             case "Papier":
-                (computer === "papier") ? "JE HEBT GEWONNEN!" : "JE HEBT VERLOREN!";
+               result = (ComputerChoice === "Schaar") ? "JE HEBT GEWONNEN!" : "JE HEBT VERLOREN!";
 
             break;
 
             case "Schaar":
-                (computer === "schaar") ? "JE HEBT GEWONNEN!" : "JE HEBT VERLOREN!";
+               result = (ComputerChoice === "Steen") ? "JE HEBT GEWONNEN!" : "JE HEBT VERLOREN!";
+            break;
         
         } 
     }
 
     playercontrol.textContent = `PLAYER: ${playerChoice}`;
-    computercontrol.textContent = `Computer: ${playerChoice}`;  
+    computercontrol.textContent = `COMPUTER: ${ComputerChoice}`;  
     gelijkcontrol.textContent = result;
 
     gelijkcontrol.classList.remove("greenText", "redText");
@@ -39,9 +43,14 @@ function Game(playerChoice){
     switch(result){
         case "JE HEBT GEWONNEN!":
             gelijkcontrol.classList.add("greenText");
+            playerScore++;
+            playerScoreDisplay.textContent = playerScore;
             break;
         case "JE HEBT VERLOREN!":
             gelijkcontrol.classList.add("redText");
+            computerScore++;
+            computerScoreDisplay.textContent = computerScore;
             break;
+
     }
 }

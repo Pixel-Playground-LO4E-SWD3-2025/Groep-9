@@ -1,9 +1,8 @@
 <footer>
-      <img class="" src="" alt="">
-      <article class="">
+    <img class="" src="" alt="">
+    <article class="">
       </article>
-      <article class="">
+    <article class="">
       </article>
-    </footer>
-    </body>
+</footer>
 </html>

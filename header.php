@@ -7,4 +7,14 @@
     <meta name ="keywords" content="Huisgemaakte gerechten , Authentieke familierecepten , Oma's koken , Huisstijl maaltijd , Klassieke Nederlandse gerechten">
     <meta name="author" content="David">
     <title>SideGame</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/game.js" defer></script>
 </head>
+<header>
+    <nav> 
+     <a href="index(home).php">Home</a>
+     <a href="Games.php">Games</a>
+     <a href="#">Over ons</a>
+     <a href="#">Contacten</a>
+    </nav>
+</header>
