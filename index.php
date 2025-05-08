@@ -1,12 +1,19 @@
 <?php require_once 'header.php'; ?>
 <body>
     <main>
-     <section>
-        <article>
-      <h1>Welcome to the Home Page</h1>
-      <P> click to play the games <P>
-        <button onclick ="location.href='index2.php'">play</button>
-        <article>
+      <section>  
+       <article>
+         <h1>Welcome to the Home Page</h1>
+         <P> click to play the games <P>
+         <video autoplay loop muted src="video/gustas.mp4"></video>
+         <button class="ingang" onclick="location.href='index2.php'">Play Games</button>    
+      </article>
+      
+      <button id="playAudio">▶️ Start Music</button>
+      <audio id="background-audio" loop>
+            <source src="audio/me-gusta-tu.mp3" type="audio/mpeg">
+       </audio>
+       <script src="js/audio.js" defer></script>
      </section>
     <main>
 </body>

@@ -1,3 +1,8 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
 body{
     font-family: Arial, Helvetica, sans-serif;
     font-weight: bold;
@@ -5,6 +10,7 @@ body{
     display: flex;
     align-items: center;
     flex-direction: column;
+    position: relative;
 
 }
 section{
@@ -13,6 +19,8 @@ section{
     justify-content: center;
     height: 102vh;
     background-clip: border-box;
+    width: 100%;
+    position: relative;
 }
 h1{
     font-size: 3rem;
@@ -60,11 +68,12 @@ p{
 nav{
     background-color: black;
     padding: 20px;
-    width: 98vw;
+    width: 100vw;
     text-align: center;
     position: fixed;
     top: 0;
     left: 0;
+    z-index: 10;
 }
 nav a {
     padding-left: 30px;
@@ -75,8 +84,45 @@ nav a:hover{
 }
 footer{
   background-color: black;
-  width: 98vw;
-  padding: 100px;
+  width: 100vw;
+  padding: 40px;
+  margin-top: -10px;
 }
+.ingang{
+    background-color: #50c878ef;
+    color: white;
+    border: none;
+    padding: 30px 100px;
+    font-size: 2rem;
+    border-radius: 50px;
+    margin-top: 30px;
+}
+video{
+    width: 100vw;
+    height: 105%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+   
 
-    
+}
+#playAudio{
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    display: flex;
+    align-items: center;
+    opacity: 0.7;
+    align-items: center;
+    width: 110px;
+    padding: 8px;
+    border-radius: 20px;
+    z-index: 10;
+    border: none;
+}
+#playAudio:hover{
+    opacity: 1;
+    background-color: #50c878ef;
+}
