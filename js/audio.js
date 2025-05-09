@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function(){
-    const audio = document.getElementById("background-audio");
     const playButton = document.getElementById("playAudio");
+    const audio = document.getElementById("background-audio");
 
     playButton.addEventListener("click", function() {
         if (audio.paused) {
