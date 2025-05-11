@@ -3,8 +3,13 @@
     <main>
      <section>
         <article>
-      <h1>Menu</h1>
-        <article>
+          <h1 id="welkom">Menu</h1>
+            <video autoplay loop muted src = "video/Skycolor.mp4"></video>
+       </article>
+
+        <article class="Block">
+          <P id="Head">Welcome bij PixelGame</p>
+       </article>
      </section>
     <main>
 </body>
