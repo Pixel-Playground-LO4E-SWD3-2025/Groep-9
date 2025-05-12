@@ -92,7 +92,7 @@ p{
 }
 nav{
     background-color: black;
-    padding: 20px;
+    padding: 24px;
     width: 100vw;
     text-align: center;
     position: fixed;
@@ -151,3 +151,18 @@ video{
     opacity: 1;
     background-color: #50c878ef;
 }
+.logo{
+    position: absolute;
+    left: 15px;
+    width: 75px;
+    height: 65px;
+    top: 0px;
+}
+.footer-logo{
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    margin-top: -75px;
+    left: 15px;
+
+}   

@@ -12,6 +12,7 @@
 </head>
 <header>
     <nav> 
+     <img src="img/panther.png" alt="Logo" class="logo">
      <a href="index.php">Home</a>
      <a href="Games.php">Games</a>
      <a href="#">Over ons</a>

@@ -1,5 +1,5 @@
 <footer>
-    <img class="" src="" alt="">
+    <img class="footer-logo" src="img/panther.png" alt="Logo">
     <article class="">
       </article>
     <article class="">
