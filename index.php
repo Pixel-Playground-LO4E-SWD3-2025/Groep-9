@@ -1,11 +1,11 @@
 <?php require_once 'header.php'; ?>
 <body>
     <main>
-      <section>  
+      <section> 
+         <video class="Auto-video" autoplay loop muted src="video/gustas.mp4"></video> 
        <article>
          <h1>Welcome to the Home Page</h1>
          <P> click to play the games <P>
-         <video autoplay loop muted src="video/gustas.mp4"></video>
          <button class="ingang" onclick="location.href='index2.php'">Play Games</button>    
       </article>
       
@@ -15,6 +15,6 @@
        </audio>
        <script src="js/audio.js" defer></script>
      </section>
-    <main>
+ </main>
 </body>
 <?php require_once 'footer.php'; ?>

@@ -13,6 +13,9 @@ body{
     position: relative;
 
 }
+main{
+    margin-top: 10vh;
+}
 section{
     display: flex;
     flex-direction: column;
@@ -26,21 +29,51 @@ section{
     display: flex;
     justify-content: center;
     background-color: black;
-    width: 35%;
+    width: 45vw;
     height: 50vh;
     position: absolute;
-    z-index: -1;
+    z-index: 1;
     border-radius: 20px;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    outline-color: #50c878ef;
+    outline-style: solid;
+    outline-width: 5px;
+
 }
-#welkom{
+.Game-block{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    width: 35%;
+    height: 50vh;
+    z-index: 1;
+}
+.Scoreboard{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    width: 50vw;
+    height: 20vh;
+    position: absolute;
+    bottom: 20px;   
+    border-radius: 20px;
+    transform: translate( -40%, 0% );
+    outline-color: #50c878ef;
+    outline-style: solid;
+    outline-width: 5px;
+    z-index: 1;
+}
+.welkom{
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     margin-top: -35vh;
+    z-index: 2;
 }
 h1{
     font-size: 3rem;
@@ -54,6 +87,22 @@ p{
     color: white;
     margin: 20px;
     font-size: 30px;
+}
+#info{
+    color: white;
+    font-size: 20px;
+    margin: 20px;
+    text-align: center;
+    bottom: 70px;
+    position: absolute;
+}
+#score{
+    color: white;
+    font-size: 20px;
+    margin: 20px;
+    bottom: 40px;
+    position: absolute;
+    left: 1.5%;
 }
 .spel{
     margin-bottom: 30px;
@@ -94,6 +143,7 @@ nav{
     background-color: black;
     padding: 24px;
     width: 100vw;
+    height: 10vh;
     text-align: center;
     position: fixed;
     top: 0;
@@ -112,6 +162,8 @@ footer{
   width: 100vw;
   padding: 80px;
   margin-top: -10px;
+  position: relative;
+  z-index: 2;
 }
 .ingang{
     background-color: #50c878ef;
@@ -122,21 +174,29 @@ footer{
     border-radius: 50px;
     margin-top: 30px;
 }
-video{
-    width: 100vw;
-    height: 105%;
-    object-fit: cover;
-    position: absolute;
+.Auto-video{
+    width: 100%;
+    height: 100%;
+    position: fixed;
     top: 0;
     left: 0;
     z-index: -1;
-   
+    object-fit: cover;
+}
+.skycolor{
+   position: fixed;
+   top: 0;
+   left: 0;
+   width: 100vw;
+   height: 100%;
+   object-fit: cover;
+   z-index: -1;
 
 }
 #playAudio{
     position: absolute;
     bottom: 20px;
-    right: 20px;
+    right: -28vw;
     display: flex;
     align-items: center;
     opacity: 0.7;
