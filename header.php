@@ -17,5 +17,7 @@
      <a href="Game-menu.php">Games</a>
      <a href="#">Over ons</a>
      <a href="#">Contacten</a>
+     <a href="inloggen.php">👤</a>
     </nav>
+
 </header>

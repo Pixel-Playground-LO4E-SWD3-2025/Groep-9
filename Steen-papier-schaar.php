@@ -1,6 +1,7 @@
   <?php require_once 'header.php'; ?>
 <body>
     <main>
+          <video class="skycolor" autoplay loop muted src = "video/Skycolor.mp4"></video>
         <section>
         <h1>Steen - Papier - Schaar</h1>
         <article class="spel">
