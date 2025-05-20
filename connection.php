@@ -1,15 +1,16 @@
-<?php 
-$servername="";
-$databasename="";
-$username="";
-$password="";
+<?php
+$servername="127.0.0.1";
+$username="root";
+$password="benji";
+$dbname="Project";
 
-try{
-    $conn =new PDO("mysql:host=$servername;dbname=$databasename", $username, $password);
-    $conn -> setAttribute(PDO: :ATTR_ERRMODE, PDO: :ERRMODE_EXCEPTION);
+$conn =new mysqli($servername, $username, $password, $dbname);
 
-} catch(PDOException $e){
-    echo "Connection failed: " . $e -> getMessage();
-    exit();
+try {
+    $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $conn->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
+} catch(PDOException $e) {
+    die("Verbinding mislukt: " . $e->getMessage());
 }
 ?>

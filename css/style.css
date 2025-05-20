@@ -185,10 +185,55 @@ nav{
 nav a {
     padding-left: 30px;
     color: white; 
+    text-decoration: none;
 }
 nav a:hover{
     color: #50c878ef;
 }
+#loginwoord{
+    text-align: center;
+    font-size: 60px;
+    margin: 20px;
+    position: relative;
+    
+}
+#username{
+    font-size: 20px;
+    margin: 20px;
+    text-align: center;
+    bottom: 20vh;
+    position: relative;
+    left: 0%;
+    width: 100%;
+    padding: 10px;
+    border-radius: 20px;
+    top: 0;
+}
+#email{
+    font-size: 20px;
+    margin: 20px;
+    text-align: center;
+    bottom: 10vh;
+    position: relative;
+    left: 0%;
+    width: 100%;
+    padding: 10px;
+    border-radius: 20px;
+    top: 0;
+}
+#password{
+    font-size: 20px;
+    margin: 20px;
+    text-align: center;
+    bottom: 0vh;
+    position: relative;
+    left: 0%;
+    width: 100%;
+    padding: 10px;
+    border-radius: 20px;
+    top: 0;
+}
+
 footer{
   background-color: black;
   width: 100vw;
