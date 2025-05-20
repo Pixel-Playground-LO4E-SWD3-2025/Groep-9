@@ -233,6 +233,16 @@ nav a:hover{
     border-radius: 20px;
     top: 0;
 }
+#inlogbutton{
+    background-color: #50c878ef;
+    position: relative;
+    width: 100px;
+    align-items: center;
+    padding: 15px;
+    border-radius: 20px;
+    border: none;
+    left: 47.5%;
+}
 
 footer{
   background-color: black;
