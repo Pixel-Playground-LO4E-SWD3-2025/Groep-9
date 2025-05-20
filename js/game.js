@@ -19,16 +19,16 @@ function Game(playerChoice){
     else{
         switch(playerChoice){
             case "Steen":
-               result = (ComputerChoice === "Papier") ? "JE HEBT GEWONNEN!" : "JE HEBT VERLOREN!";
+               result = (ComputerChoice === "Schaar") ? "JE HEBT GEWONNEN!" : "JE HEBT VERLOREN!";
             break;
 
             case "Papier":
-               result = (ComputerChoice === "Schaar") ? "JE HEBT GEWONNEN!" : "JE HEBT VERLOREN!";
+               result = (ComputerChoice === "Steen") ? "JE HEBT GEWONNEN!" : "JE HEBT VERLOREN!";
 
             break;
 
             case "Schaar":
-               result = (ComputerChoice === "Steen") ? "JE HEBT GEWONNEN!" : "JE HEBT VERLOREN!";
+               result = (ComputerChoice === "Papier") ? "JE HEBT GEWONNEN!" : "JE HEBT VERLOREN!";
             break;
         
         } 
