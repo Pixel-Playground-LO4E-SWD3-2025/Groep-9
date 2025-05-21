@@ -243,6 +243,20 @@ nav a:hover{
     border: none;
     left: 47.5%;
 }
+#uitlogbutton{
+    background-color: #50c878ef;
+    position: relative;
+    width: 100px;
+    padding: 15px;
+    border-radius: 20px;
+    border: none;
+    align-self: center;
+    top: 40px;
+    left: 35%;
+    text-decoration: none;
+    text-align: center;
+
+}
 
 footer{
   background-color: black;
@@ -251,6 +265,7 @@ footer{
   height: auto;
   position: relative;
   z-index: 2;
+
 }
 .ingang{
     background-color: #50c878ef;
@@ -313,4 +328,11 @@ footer{
     margin-top: -75px;
     left: 15px;
 
+}
+#Watermark{
+    color: white;
+    position: absolute;
+    top: 80%;
+    left: 84%;
+    font-size: 15px;  
 }   
