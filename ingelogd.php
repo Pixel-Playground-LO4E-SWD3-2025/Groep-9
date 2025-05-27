@@ -1,12 +1,11 @@
 <?php 
-session_start();
+require_once 'header.php';
 
 if(!isset($_SESSION['user_id'])){
     header("Location: inloggen.php");
     exit();
 }
 
-require_once 'header.php';
 ?>
 <body>
     <main>

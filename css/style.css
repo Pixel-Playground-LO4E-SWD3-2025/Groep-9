@@ -86,7 +86,7 @@ h1{
     text-align: center;
 }
 p{
-    text-align: center;
+  text-align: center;  
 }
 .Gamenaam{
     font-size: 2.5rem;
@@ -255,6 +255,52 @@ nav a:hover{
     left: 35%;
     text-decoration: none;
     text-align: center;
+
+}
+#uitlogbutton2{
+     background-color: #50c878ef;
+    position: relative;
+    width: 100px;
+    padding: 15px;
+    border-radius: 20px;
+    border: none;
+    align-self: center;
+    top: 20vh;
+    left: 65%;
+    text-decoration: none;
+    text-align: center;
+}
+#editprofiel{
+    background-color: #50c878ef;
+    position: relative;
+    width: 100px;
+    padding: 15px;
+    border-radius: 20px;
+    border: none;
+    align-self: center;
+    text-decoration: none;
+    text-align: center;
+    margin-bottom: -50vh;
+    left: 15%;
+    top: 22.5vh;
+}
+.profielpagina{
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    width: 75vh;
+    height: 75vh;
+    position: absolute;
+    z-index: 1;
+    border-radius: 20px;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    outline-color:#50c878ef;
+    outline-style: solid;
+    outline-width: 5px;
+    color: white;
+
 
 }
 
