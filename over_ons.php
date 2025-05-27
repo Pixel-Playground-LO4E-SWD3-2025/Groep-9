@@ -11,9 +11,6 @@
           <P id="Head">over ons</p>
           <p id="info">Welkom bij PixelPlayground jouw online plek voor gratis spelletjes! Of je nu houdt van actie, puzzels of klassiekers, bij ons vind je altijd iets leuks om te spelen. Speel direct op je mobiel, tablet of computer, zonder downloads. Nieuwe games worden regelmatig toegevoegd!</p>
         </article>
-            <article class="Scoreboard">
-           <p id="score">Highscore:</p>
-        </article>
      </section>
 </main>
 </body>
