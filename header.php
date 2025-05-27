@@ -22,7 +22,13 @@ if (session_status() == PHP_SESSION_NONE){
      <a href="Game-menu.php">Games</a>
      <a href="#">Over ons</a>
      <a href="#">Contacten</a>
-     <a href="inloggen.php">👤</a>
+<!-- Als user_id niet bestaat in session -->
+    <?php if(!isset($_SESSION['user_id'])): ?>
+        <a href="inloggen.php">👤</a> <!--  Laat dit zien -->
+    <?php else: ?>
+        <a href="profiel.php">👤 <?php echo $_SESSION['username']; ?></a> <!--  Laat dit zien -->
+        <a href="logout.php">👤 Uitloggen</a> <!--  Laat dit zien -->
+    <?php endif; ?>
     </nav>
 
 </header>
