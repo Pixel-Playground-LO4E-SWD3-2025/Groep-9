@@ -20,7 +20,7 @@ if (session_status() == PHP_SESSION_NONE){
      <img src="img/panther.png" alt="Logo" class="logo">
      <a href="index.php">Home</a>
      <a href="Game-menu.php">Games</a>
-     <a href="#">Over ons</a>
+     <a href="over_ons.php">Over ons</a>
      <a href="#">Contacten</a>
 <!-- Als user_id niet bestaat in session -->
     <?php if(!isset($_SESSION['user_id'])): ?>
