@@ -20,8 +20,8 @@ if (session_status() == PHP_SESSION_NONE){
      <img src="img/panther.png" alt="Logo" class="logo">
      <a href="index.php">Home</a>
      <a href="Game-menu.php">Games</a>
-     <a href="#">Over ons</a>
-     <a href="#">Contacten</a>
+     <a href="over_ons.php">Over ons</a>
+     <a href="contact.php">Contacten</a>
      <a href="inloggen.php">👤</a>
     </nav>
 
