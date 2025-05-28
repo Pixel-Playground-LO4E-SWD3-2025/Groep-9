@@ -265,7 +265,7 @@ nav a:hover{
     border-radius: 20px;
     border: none;
     align-self: center;
-    top: 20vh;
+    top: 7.5vh;
     left: 65%;
     text-decoration: none;
     text-align: center;
@@ -282,7 +282,7 @@ nav a:hover{
     text-align: center;
     margin-bottom: -50vh;
     left: 15%;
-    top: 22.5vh;
+    top: 10vh;
 }
 .profielpagina{
     justify-content: center;
@@ -293,7 +293,7 @@ nav a:hover{
     position: absolute;
     z-index: 1;
     border-radius: 20px;
-    top: 60%;
+    top: 55%;
     left: 50%;
     transform: translate(-50%, -50%);
     outline-color:#50c878ef;
@@ -302,6 +302,10 @@ nav a:hover{
     color: white;
 
 
+}
+.ProfielPage{
+    width: 100px;
+    height: 100px;   
 }
 
 footer{

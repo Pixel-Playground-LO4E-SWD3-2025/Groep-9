@@ -4,6 +4,7 @@
         <section>
             <video class="skycolor" autoplay loop muted src="video/skycolor.mp4"></video>
             <article class="profielpagina">
+                <img class="ProfielPage" src="img/profile.png" alt="profiel-foto">
                 <h1 Profiel pagina van <?php echo $_SESSION['username']; ?>></h1> <br>
                 <p>Welkom op je profielpagina, <?php echo $_SESSION['username']; ?>!</p> <br>
                 <p>Hier kun je Persoonlijke informatie zien en beheren.</p><br>
