@@ -3,7 +3,7 @@
      <main>
         <section>
             <video class="skycolor" autoplay loop muted src="video/skycolor.mp4"></video>
-            <article>
+            <article class="profielpagina">
              
             </article>
       </section>    
