@@ -24,5 +24,4 @@ if (session_status() == PHP_SESSION_NONE){
      <a href="contact.php">Contacten</a>
      <a href="inloggen.php">👤</a>
     </nav>
-
 </header>
