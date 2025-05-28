@@ -1,8 +1,7 @@
 <footer>
     <img class="footer-logo" src="img/panther.png" alt="Logo">
-    <article class="">
-      </article>
-    <article class="">
+    <article>
+       <p id="Watermark">&copy;2025 PixelGame David Orozco</p>
       </article>
 </footer>
 </html>

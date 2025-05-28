@@ -21,7 +21,13 @@ if (session_status() == PHP_SESSION_NONE){
      <a href="index.php">Home</a>
      <a href="Game-menu.php">Games</a>
      <a href="over_ons.php">Over ons</a>
-     <a href="contact.php">Contacten</a>
-     <a href="inloggen.php">👤</a>
+     <a href="#">Contacten</a>
+<!-- Als user_id niet bestaat in session -->
+    <?php if(!isset($_SESSION['user_id'])): ?>
+        <a href="inloggen.php">👤</a> <!--  Laat dit zien -->
+    <?php else: ?>
+        <a href="profiel.php">👤 <?php echo $_SESSION['username']; ?></a> <!--  Laat dit zien -->
+        <a href="logout.php">👤 Uitloggen</a> <!--  Laat dit zien -->
+    <?php endif; ?>
     </nav>
 </header>

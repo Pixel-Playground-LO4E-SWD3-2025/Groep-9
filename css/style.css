@@ -86,7 +86,7 @@ h1{
     text-align: center;
 }
 p{
-    text-align: center;
+  text-align: center;  
 }
 .Gamenaam{
     font-size: 2.5rem;
@@ -243,6 +243,70 @@ nav a:hover{
     border: none;
     left: 47.5%;
 }
+#uitlogbutton{
+    background-color: #50c878ef;
+    position: relative;
+    width: 100px;
+    padding: 15px;
+    border-radius: 20px;
+    border: none;
+    align-self: center;
+    top: 40px;
+    left: 35%;
+    text-decoration: none;
+    text-align: center;
+
+}
+#uitlogbutton2{
+     background-color: #50c878ef;
+    position: relative;
+    width: 100px;
+    padding: 15px;
+    border-radius: 20px;
+    border: none;
+    align-self: center;
+    top: 7.5vh;
+    left: 65%;
+    text-decoration: none;
+    text-align: center;
+}
+#editprofiel{
+    background-color: #50c878ef;
+    position: relative;
+    width: 100px;
+    padding: 15px;
+    border-radius: 20px;
+    border: none;
+    align-self: center;
+    text-decoration: none;
+    text-align: center;
+    margin-bottom: -50vh;
+    left: 15%;
+    top: 10vh;
+}
+.profielpagina{
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    width: 75vh;
+    height: 75vh;
+    position: absolute;
+    z-index: 1;
+    border-radius: 20px;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    outline-color:#50c878ef;
+    outline-style: solid;
+    outline-width: 5px;
+    color: white;
+
+
+}
+.ProfielPage{
+    width: 100px;
+    height: 100px;   
+}
 
 footer{
   background-color: black;
@@ -251,6 +315,7 @@ footer{
   height: auto;
   position: relative;
   z-index: 2;
+
 }
 .ingang{
     background-color: #50c878ef;
@@ -313,4 +378,11 @@ footer{
     margin-top: -75px;
     left: 15px;
 
+}
+#Watermark{
+    color: white;
+    position: absolute;
+    top: 80%;
+    left: 84%;
+    font-size: 15px;  
 }   
