@@ -258,7 +258,7 @@ nav a:hover{
 
 }
 #uitlogbutton2{
-     background-color: #50c878ef;
+    background-color: #50c878ef;
     position: relative;
     width: 100px;
     padding: 15px;
@@ -385,4 +385,32 @@ footer{
     top: 80%;
     left: 84%;
     font-size: 15px;  
+}
+.Label-menu{
+    position: relative;
+    justify-content: center;
+    display:flex;
+    margin-bottom: 20px;
+
+
+}
+.Input-menu{
+    position: relative;
+    justify-content: center;
+    left: 35%;
+    top: -20px
+
+}
+.Submit-menu{
+    background-color: #50c878ef;
+
+    position: relative;
+    width: 150px;
+    padding: 15px;
+    border-radius: 20px;
+    border: none;
+    top: 7.5vh;
+    left: 36%;
+    text-decoration: none;
+    text-align: center;   
 }
