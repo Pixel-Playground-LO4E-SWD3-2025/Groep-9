@@ -13,6 +13,13 @@
                   het is een geweldige manier om je reflexen te testen kan jij hem verslaan?!</p>
                   <button class="ingang" onclick="location.href='Steen-papier-schaar.php'">Play Games</button>
               </article>
+              <article>
+                class="Game-block">
+                 <p class="Gamenaam">Dino</p>
+                 <img class="Game-img" src="img/steen-papier-schaar.png" alt="Dino">
+                 <p class="Gameinfo">jajajajajjajajajajajaja</p>
+                  <button class="ingang" onclick="location.href='dinogame.php'">Play Games</button>
+                </article>
         </section>    
 </main>
 </body>
