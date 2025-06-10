@@ -22,7 +22,7 @@
                <input class="Input-menu"type="email" name="email" value="<?php echo htmlspecialchars($user['email']); ?>" required><br>
                <label class="Label-menu">Password:</label>
                <input class="Input-menu" type="password" name=password value="" placeholder="Enter new password for change"><br>
-             <button class="Submit-menu" type="submit">update Profile</button>
+             <button class="Submit-menu" type="submit">Update Profile</button>
             </article>
       </section>    
     </main>

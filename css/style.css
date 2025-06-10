@@ -403,7 +403,8 @@ footer{
 }
 .Submit-menu{
     background-color: #50c878ef;
-
+    color: white;
+    border: none;
     position: relative;
     width: 150px;
     padding: 15px;
