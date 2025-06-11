@@ -1,10 +1,23 @@
 <?php require_once 'header.php'; ?>
+<?php
+include_once 'connection.php';
+$user_id = $_SESSION['user_id'];
+$query = "SELECT profile_photo FROM users WHERE id = ?";
+$stmt = $conn->prepare($query);
+$stmt->execute([$user_id]);
+$user = $stmt->fetch(PDO::FETCH_ASSOC);
+?>
+<?php if($user['profile_photo'] && file_exists ($user['profile_photo'])): ?>
+    <img class="profielPage" src="<?php echo htmlspecialchars($user['profile_photo']); ?>" alt="profiel-foto">
+<?php else: ?>
+    <img class="profielPage" src=img/profile.png alt="profiel-foto">
+<?php endif; ?>
+    
 <body>
     <main>
         <section>
             <video class="skycolor" autoplay loop muted src="video/skycolor.mp4"></video>
             <article class="profielpagina">
-                <img class="ProfielPage" src="img/profile.png" alt="profiel-foto">
                 <h1 Profiel pagina van <?php echo $_SESSION['username']; ?>></h1> <br>
                 <p>Welkom op je profielpagina, <?php echo $_SESSION['username']; ?>!</p> <br>
                 <p>Hier kun je Persoonlijke informatie zien en beheren.</p><br>

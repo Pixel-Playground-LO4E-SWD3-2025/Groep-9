@@ -308,11 +308,6 @@ nav a:hover{
 
 
 }
-.ProfielPage{
-    width: 100px;
-    height: 100px;   
-}
-
 footer{
   background-color: black;
   width: 100vw;
@@ -419,4 +414,12 @@ footer{
     left: 36%;
     text-decoration: none;
     text-align: center;   
+}
+.profielPage{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    top: 20vh;  
 }
