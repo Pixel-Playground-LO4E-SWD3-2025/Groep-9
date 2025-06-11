@@ -47,7 +47,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
         if ($stmt-> rowCount() > 0 ){
             $user = $stmt ->fetch();
             echo "<p>Gebruiker gevonden, wachtwoord wordt gecontroleerd...</p>";
-            if ($password == $user->password){
+            if (password_verify($password, $user -> password)){
                 echo "<p>Wachtwoord correct!</p>";
 
                 $_SESSION['user_id'] = $user->id;
