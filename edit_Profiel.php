@@ -5,12 +5,6 @@
     include_once 'connection.php';
      $user_id = $_SESSION['user_id'];
 
-    $query = "SELECT * FROM users WHERE id = ?";
-    $stmt = $conn->prepare($query);
-    $stmt-> execute([$user_id]);
-    $user = $stmt-> fetch(PDO::FETCH_ASSOC);
-    
-
     if (isset($_POST['change'])){
        $name = $_POST['name'];
         $email = $_POST['email'];
@@ -18,29 +12,31 @@
         $profile_photo = null;
 
 
-
+    //Profiel Foto Upload//
     if(isset($_FILES['profile_photo']) && $_FILES['profile_photo']['error'] == 0){
       $upload_dir = 'uploads/profile_photos/';
 
-      if (!is_dir($upload_dir)){
-        mkdir($upload_dir, 0755, true);
+      if (!is_dir($upload_dir)){ // controleer of de map bestaat
+        mkdir($upload_dir, 0755, true); //Maakt de map aan als deze niet bestaat
 
       }
-      $allowed_types =['image/jpeg', 'image/jpg' , 'image/png', 'image/gif'];
+      $allowed_types =['image/jpeg', 'image/jpg' , 'image/png', 'image/gif', 'image/webp'];
       $file_type = $_FILES['profile_photo']['type'];
-
+      
+      // Controleer of het bestandstype is toegestaan / Nieuwe bestand naam maken//
       if (in_array($file_type, $allowed_types)){
         $file_extension = pathinfo($_FILES['profile_photo']['name'], PATHINFO_EXTENSION);
-        $new_file_name = 'Profile_' . $user_id . '.' . $file_extension;
-        $upload_path = $upload_dir . $new_file_name;
-        if (move_uploaded_file($_FILES['profile_photo']['tmp_name'], $upload_path )){
+        $new_file_name = 'Profile_' . $user_id . '.' . $file_extension; 
+        $upload_path = $upload_dir . $new_file_name; 
+        if (move_uploaded_file($_FILES['profile_photo']['tmp_name'], $upload_path )){   //verschuif het bestand naar de upload map en op een variable zetten//
            $profile_photo = $upload_path;
 
        }       
     }
  }
        
- 
+    // update gebruikersgegevens database en wachtwoord hashen en controleert of het is ingevuld//
+
     if (!empty($password)){
        $hashed_password = password_hash($password, PASSWORD_DEFAULT);
         if($profile_photo){
@@ -59,19 +55,21 @@
       $stmt = $conn ->prepare($update_query);
       $stmt->execute([$name, $email, $profile_photo, $user_id]);
     }else{
-      $update_query = "UPDATE users SET username = ?, email = ? WHERE id = ?";
-      $stmt = $conn->prepare($update_query);
-      $stmt->execute([$name, $email,  $user_id]);
-  }
-}
-      $_SESSION['username'] = $name;
-      header('Location: Profiel.php');
-      echo '<article class="success">Profile updated successfully!</article>';
+       $update_query = "UPDATE users SET username = ?, email = ? WHERE id = ?";
+       $stmt = $conn->prepare($update_query);
+       $stmt->execute([$name, $email,  $user_id]);
+    }
+ }
+      $_SESSION['username'] = $name;  
+      header('Location: profiel.php');
       exit();
 }
 
-  
-  
+    $query = "SELECT * FROM users WHERE id = ?";
+    $stmt = $conn->prepare($query);
+    $stmt-> execute([$user_id]);
+    $user = $stmt-> fetch(PDO::FETCH_ASSOC);
+    //database ophalen//
 
     ?>
    <body>

@@ -294,7 +294,7 @@ nav a:hover{
     align-items: center;
     background-color: black;
     width: 75vh;
-    height: 75vh;
+    height: 85vh;
     position: absolute;
     z-index: 1;
     border-radius: 20px;
@@ -416,10 +416,14 @@ footer{
     text-align: center;   
 }
 .profielPage{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    top: 20vh;  
+    width: 65px;
+    height: 65px;
+    position: absolute;
+    top: 0;
+    left: 5px;
+    margin-top: 6px;
+    z-index: 10;
+    border: 2px solid #50c878ef;
+    border-radius: 50%;
+    object-fit: cover;
 }
