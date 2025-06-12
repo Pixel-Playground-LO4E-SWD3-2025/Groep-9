@@ -24,7 +24,6 @@ section{
 .Block{
     display: flex;
     justify-content: center;
-    background-color: black;
     width: 45vw;
     height: 50vh;
     position: absolute;
@@ -55,6 +54,52 @@ section{
     outline-style: solid;
     outline-width: 5px;
     left: -20vw;
+}
+.Slide-text{
+    position: absolute;
+    top: 45.4%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.Slide{
+    display: none;
+    animation: fade 1s ease-in-out;
+    text-align: center;
+}
+.Slide.active{
+    display: block;
+}
+
+.Slide-image{
+    color: white;
+    font-size: 1.2rem;
+    margin-top: 20px;
+    width: 44vw;
+    height: 40vh;
+    object-fit: cover;
+}
+.Slide-image2{
+    color: white;
+    font-size: 1.2rem;
+    margin-top: 0px;
+    width: 45vw;
+    height: 50vh;
+    object-fit: cover;
+    border-radius: 20px;
+}
+
+@keyframes fade{
+    from{
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+
 }
 .Scoreboard{
     display: flex;
@@ -113,20 +158,6 @@ p{
     align-items: center;
     z-index: -10;
     
-}
-
-#Head{
-    color: white;
-    margin: 20px;
-    font-size: 30px;
-}
-#info{
-    color: white;
-    font-size: 20px;
-    margin: 20px;
-    text-align: center;
-    bottom: 70px;
-    position: absolute;
 }
 #score{
     color: white;
