@@ -1,6 +1,6 @@
 let currentSlide = 0; 
 const slides = document.querySelectorAll('.Block .Slide');
-function showSlide(index){
+const showSlide = (index) => {
     slides.forEach((slide, i)=> {
         slide.classList.toggle('active', i === index);
     });

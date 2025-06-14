@@ -5,6 +5,12 @@
     include_once 'connection.php';
      $user_id = $_SESSION['user_id'];
 
+    $query = "SELECT * FROM users WHERE id = ?";
+    $stmt = $conn->prepare($query);
+    $stmt-> execute([$user_id]);
+    $user = $stmt-> fetch(PDO::FETCH_ASSOC);
+    //database ophalen//
+
     if (isset($_POST['change'])){
        $name = $_POST['name'];
         $email = $_POST['email'];
@@ -22,6 +28,11 @@
       }
       $allowed_types =['image/jpeg', 'image/jpg' , 'image/png', 'image/gif', 'image/webp'];
       $file_type = $_FILES['profile_photo']['type'];
+      if ($_FILES['profile_photo']['size'] > 5 * 1024 * 1024) { // 5MB max
+      $_SESSION['error'] = "Bestand is te groot. Maximum 5MB toegestaan.";
+      header('Location: edit_profiel.php');
+      exit();
+}
       
       // Controleer of het bestandstype is toegestaan / Nieuwe bestand naam maken//
       if (in_array($file_type, $allowed_types)){
@@ -37,39 +48,43 @@
        
     // update gebruikersgegevens database en wachtwoord hashen en controleert of het is ingevuld//
 
-    if (!empty($password)){
-       $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-        if($profile_photo){
-            $update_query = "UPDATE users SET username = ?, email = ?, password = ?, profile_photo = ?  WHERE id= ?";
+    try {
+    if (!empty($password)) {
+        $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+        if ($profile_photo) {
+            $update_query = "UPDATE users SET username = ?, email = ?, password = ?, profile_photo = ? WHERE id = ?";
             $stmt = $conn->prepare($update_query);
-            $stmt->execute([$name, $email, $hashed_password, $profile_photo, $user_id]);   
-    }else {
-       $update_query = "UPDATE users SET username = ?, email = ?, password = ? WHERE id=?";
-       $stmt = $conn->prepare($update_query);
-       $stmt->execute([$name, $email, $hashed_password, $user_id]);
+            $stmt->execute([$name, $email, $hashed_password, $profile_photo, $user_id]);
+        } else {
+            $update_query = "UPDATE users SET username = ?, email = ?, password = ? WHERE id = ?";
+            $stmt = $conn->prepare($update_query);
+            $stmt->execute([$name, $email, $hashed_password, $user_id]);
+        }
+    } else {
+        if ($profile_photo) {
+            $update_query = "UPDATE users SET username = ?, email = ?, profile_photo = ? WHERE id = ?";
+            $stmt = $conn->prepare($update_query);
+            $stmt->execute([$name, $email, $profile_photo, $user_id]);
+        } else {
+            $update_query = "UPDATE users SET username = ?, email = ? WHERE id = ?";
+            $stmt = $conn->prepare($update_query);
+            $stmt->execute([$name, $email, $user_id]);
+        }
     }
-  
-    }else {
-    if($profile_photo){
-      $update_query = "UPDATE users SET username = ?, email = ?, profile_photo = ? WHERE id =?";
-      $stmt = $conn ->prepare($update_query);
-      $stmt->execute([$name, $email, $profile_photo, $user_id]);
-    }else{
-       $update_query = "UPDATE users SET username = ?, email = ? WHERE id = ?";
-       $stmt = $conn->prepare($update_query);
-       $stmt->execute([$name, $email,  $user_id]);
-    }
- }
+
       $_SESSION['username'] = $name;  
       header('Location: profiel.php');
       exit();
+
+     }catch (PDOException $e){
+        error_log("Profiel-update fout:" . $e->getMessage());
+        $_SESSION['error'] = "Update mislukt. Probeer het opnieuw.";
+        header('Location: Profiel.php');
+      exit();
+   }
 }
 
-    $query = "SELECT * FROM users WHERE id = ?";
-    $stmt = $conn->prepare($query);
-    $stmt-> execute([$user_id]);
-    $user = $stmt-> fetch(PDO::FETCH_ASSOC);
-    //database ophalen//
+    
 
     ?>
    <body>
