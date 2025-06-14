@@ -19,7 +19,7 @@
         </section>
 
         <section class="Slide">
-          <img src="img" alt="slide 3" class="Slide-image">
+          <img src="img/Dino.png" alt="slide 3" class="Slide-image2">
           <p class="Slide-text">Geniet van een verscheidenheid aan spellen.</p>
         </section>
       </article>
