@@ -57,11 +57,16 @@ if(isset($_POST['Confirm_delete']) && $_POST['Confirm_delete'] == 'Nee'){
                         Nee, ga terug
                     </button>
                 </form>
-                <a class="Registreer-button" href="Register.php">Registreer een nieuw account</a>
+                <a class="Registreer-button" href="Registreer.php">Registreer een nieuw account</a>
             </article>
         </section>
    </main>
 </body>
 </html>
-<?php
-require_once 'footer.php';    
+<?php require_once 'footer.php';  
+
+
+//&& controleert of beide voorwaarden waar zijn (logische EN-operator)//
+// || = OF een van beide moet waar zijn //
+// ! = Niet maak waar onwaar en andersom //
+?> 
