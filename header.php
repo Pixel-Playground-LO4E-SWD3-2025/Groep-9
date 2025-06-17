@@ -8,8 +8,8 @@ if (session_status() == PHP_SESSION_NONE){
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Van Oma Kost is een gezellig restaurant dat de authentieke smaken van traditionele Nederlandse thuiskookkost op tafel brengt. Geïnspireerd door gekoesterde familierecepten die generaties lang zijn doorgegeven.">
-    <meta name ="keywords" content="Huisgemaakte gerechten , Authentieke familierecepten , Oma's koken , Huisstijl maaltijd , Klassieke Nederlandse gerechten">
+    <meta name="description" content="PixelGame is een platform voor het spelen van diverse online games.">
+    <meta name ="keywords" content="PixelGame, spelletjes, online games, gratis spellen, browser games, Dino game, Rock Paper Scissors, highscore">
     <meta name="author" content="David">
     <title>PixelGame</title>
     <link rel="stylesheet" href="css/style.css">

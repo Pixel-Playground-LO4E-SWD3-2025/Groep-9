@@ -35,6 +35,7 @@ $photoPath = $_SERVER['DOCUMENT_ROOT']. '/' .$photoPath; //maak een absolute pad
                 <p>Je kunt je profiel bewerken of uitloggen via de onderstaande knoppen.</p> <br>
                 <a id="editprofiel" href="edit_Profiel.php">Profiel bewerken</a> <br>
                 <a id="uitlogbutton2" href="logout.php">Uitloggen</a> <br>
+                <a id="deletebutton" href="deletepagina.php">Account verwijderen</a> <br>
            </article>
        </section>           
    </main>

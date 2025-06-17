@@ -48,12 +48,29 @@ section{
     z-index: 1;
     border-radius: 20px;
     top: 60%;
-    left: 50%;
     transform: translate(-50%, -50%);
     outline-color:#50c878ef;
     outline-style: solid;
     outline-width: 5px;
     left: -20vw;
+}
+.Game-block2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    width: 75vh;
+    height: 50vh;
+    position: absolute;
+    z-index: 1;
+    border-radius: 20px;
+    top: 60%;
+    transform: translate( 120%, -50%);
+    outline-color:#50c878ef;
+    outline-style: solid;
+    outline-width: 5px;
+    left: -20vw;
+
 }
 .Slide-text{
     position: absolute;
@@ -349,8 +366,38 @@ nav a:hover{
     outline-style: solid;
     outline-width: 5px;
     color: white;
-
-
+}
+#deletebutton{
+    background-color: #50c878ef;
+    position: relative;
+    width: 100px;
+    padding: 15px;
+    border-radius: 20px;
+    border: none;
+    align-self: center;
+    text-decoration: none;
+    text-align: center;
+    margin-bottom: -50vh;
+    left: 60%;
+    top: 35vh;
+}
+.account-deleted{
+    text-align: center;
+    padding: 50px;
+    max-width: 600px;
+    margin: 0 auto; 
+}
+.account-deleted h1{
+    color: white;
+    margin-bottom: 20px;
+}
+.account-deleted a{
+    display: inline-block;
+    margin: 10px;
+    color: white;
+    padding: 10px 20px; 
+    text-decoration: none;
+    border-radius: 5px;
 }
 footer{
   background-color: black;
@@ -486,6 +533,11 @@ footer{
         width: 98vw;
         padding: 10px;
         left: 50%;
+    }
+    .Game-block2{
+        width: 98vw;
+        padding: 10px;
+        transform: translate(10%, 50%);
     }
     .Game-img{
         border-radius: 8px;
