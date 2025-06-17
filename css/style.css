@@ -521,6 +521,43 @@ footer{
 .menu{
     display: none;
 }
+.verwijder-Ja{
+    background-color: #50c878ef;
+    position: relative;
+    width: 120px;
+    height: 50px;
+    border-radius: 20px;
+    border: none;
+    align-self: center;
+    text-decoration: none;
+    text-align: center;
+    left: -20px; 
+    top: 10px;
+}
+.verwijder-Nee{
+    background-color: #50c878ef;
+    position: relative;
+    width: 120px;
+    height: 50px;
+    border-radius: 20px;
+    border: none;
+    align-self: center;
+    text-decoration: none;
+    text-align: center;
+    left: 20px; 
+    top: 2.5px;
+}
+.account-deleted{
+    border: solid 20px #50c878ef;
+}
+.Registreer-button{
+    background-color: #50c878ef;
+    position: relative;
+    border-radius: 20px;
+    border: none;
+    text-decoration: none;
+    top: 10px;
+}
 @media (max-width: 480px){
     .Block{
         width: 90vw;

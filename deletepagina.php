@@ -1,5 +1,6 @@
+<?php require_once 'header.php'; ?>
 <?php 
-session_start();
+
 require_once 'connection.php';
 
 
@@ -9,19 +10,27 @@ if(!isset($_SESSION['user_id'])){
 }
 $user_id = $_SESSION['user_id'];
 
-try{
-$deleteUser = "DELETE FROM users WHERE id = ?";
-$stmt = $conn->prepare($deleteUser);
-$stmt->execute([$user_id]);
+if(isset($_POST['Confirm_delete']) && $_POST['Confirm_delete'] == 'Ja'){
 
-session_destroy();
-header('location: index.php');
+
+try{
+  $deleteUser = "DELETE FROM users WHERE id = ?";
+  $stmt = $conn->prepare($deleteUser);
+  $stmt->execute([$user_id]);
+  session_destroy();
+  header('location: index.php');
+
 }catch (PDOException $e){
     
-    $_SESSION['error'] = "Er is een fout opgetreden bij het verwijderen van je account. Probeer het Later opnieuw.";
-    header('location: profiel.php');
-    exit();
+     $_SESSION['error'] = "Er is een fout opgetreden bij het verwijderen van je account. Probeer het Later opnieuw.";
+     header('location: profiel.php');
+     exit();
 
+   }
+}
+
+if(isset($_POST['Confirm_delete']) && $_POST['Confirm_delete'] == 'Nee'){
+    header('location: profiel.php');
 }
 ?>
 <html lang="nl">
@@ -34,12 +43,21 @@ header('location: index.php');
 <body>
     <main>
         <section>
+           <video class="skycolor" autoplay loop muted src= "video/Skycolor.mp4"></video>
             <article class="account-deleted">
-                <h1>Account verwijderd</h1>
-                <P>Je account is succesvol verwijderd.</p>
-                <p>Bedankt voor het gebruik van PixelGame!</p>
-                <a href="index.php">Terug naar Home</a>
-                <a href="Register.php">Registeer een nieuw account</a>
+                <h1><strong>Account verwijderen</strong></h1>
+                <P><strong>Let Op!</strong></p>
+                <p>Weet je zeker dat je account wil verwijderen?</p>
+
+                <form  method="POST" action="">
+                    <button type="submit" name="Confirm_delete" value="Ja" class="verwijder-Ja">
+                        Ja, verwijder mijn account 
+                    </button>
+                    <button type="submit" name="Confirm_delete" value="Nee" class="verwijder-Nee">
+                        Nee, ga terug
+                    </button>
+                </form>
+                <a class="Registreer-button" href="Register.php">Registreer een nieuw account</a>
             </article>
         </section>
    </main>
