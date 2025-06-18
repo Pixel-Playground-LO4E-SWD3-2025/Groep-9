@@ -10,14 +10,8 @@ if (isset($_POST['user_id']))
     
     
     $current_id = $_SESSION['user_id'];
+    $username = $_SESSION['username'];
     $vrienden_id = $_POST['vrienden_id'];
-    $username = $_POST['username'];
-    
-    var_dump($current_id, $vrienden_id, $username);
-
-     echo $current_id;
-     echo $vrienden_id;
-     echo $username;
 
     if ($current_id && $vrienden_id) {
         try {
@@ -36,10 +30,7 @@ if (isset($_POST['user_id']))
     } else {
         echo "<p>Ongeldige gebruikersgegevens.</p>";
     }
+
 }
 
-
-
-
-// pagina 
 ?>

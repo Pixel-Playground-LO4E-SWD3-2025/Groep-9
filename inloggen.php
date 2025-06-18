@@ -1,5 +1,9 @@
-<?php require_once 'connection.php'; ?>
 <?php 
+
+session_start();
+require_once 'connection.php';
+
+
 
 if (isset($_SESSION['error'])){
    echo '<article class="error">' . $_SESSION['error'] . '</article>';
@@ -24,7 +28,7 @@ if (isset($_SESSION['error'])){
                      <button id="inlogbutton"type ="submit">Login</button>
                 </form>
             </article>
-        </section>
+        </section> 
     </main>
 </body>        
 <?php require_once 'footer.php'; ?>
