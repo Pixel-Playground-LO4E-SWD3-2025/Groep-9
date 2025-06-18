@@ -25,8 +25,11 @@ if (isset($_SESSION['error'])){
                      <input type="Email" id="email" name="email" required>
                      <label for="password">password:</label>
                      <input type="password" id="password" name="password" required>
-                     <button id="inlogbutton"type ="submit">Login</button>
+                     <button id="inlogbutton"type ="submit" name="login">Login</button>
                 </form>
+                  <form action="Registreer-html.php" method="POST">
+                  <button id="Account-aanmaken"  href="Registreer-html.php"> Maak een account aan</a>
+                  </form>
             </article>
         </section> 
     </main>

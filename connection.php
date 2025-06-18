@@ -4,7 +4,7 @@ $username = "root";
 $password = "benji";
 $dbname = "Project";
 
-$conn =new mysqli($servername, $username, $password, $dbname);
+// $conn =new mysqli($servername, $username, $password, $dbname);
 
 try {
     $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);

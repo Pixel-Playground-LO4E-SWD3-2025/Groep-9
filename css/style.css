@@ -48,12 +48,29 @@ section{
     z-index: 1;
     border-radius: 20px;
     top: 60%;
-    left: 50%;
     transform: translate(-50%, -50%);
     outline-color:#50c878ef;
     outline-style: solid;
     outline-width: 5px;
     left: -20vw;
+}
+.Game-block2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    width: 75vh;
+    height: 50vh;
+    position: absolute;
+    z-index: 1;
+    border-radius: 20px;
+    top: 60%;
+    transform: translate( 120%, -50%);
+    outline-color:#50c878ef;
+    outline-style: solid;
+    outline-width: 5px;
+    left: -20vw;
+
 }
 .Slide-text{
     position: absolute;
@@ -253,7 +270,7 @@ nav a:hover{
     border-radius: 20px;
     top: 0;
 }
-#email{
+#gebruikersnaam, #email ,#wachtwoord{
     font-size: 20px;
     margin: 20px;
     text-align: center;
@@ -349,8 +366,38 @@ nav a:hover{
     outline-style: solid;
     outline-width: 5px;
     color: white;
-
-
+}
+#deletebutton{
+    background-color: #50c878ef;
+    position: relative;
+    width: 100px;
+    padding: 15px;
+    border-radius: 20px;
+    border: none;
+    align-self: center;
+    text-decoration: none;
+    text-align: center;
+    margin-bottom: -50vh;
+    left: 60%;
+    top: 35vh;
+}
+.account-deleted{
+    text-align: center;
+    padding: 50px;
+    max-width: 600px;
+    margin: 0 auto; 
+}
+.account-deleted h1{
+    color: white;
+    margin-bottom: 20px;
+}
+.account-deleted a{
+    display: inline-block;
+    margin: 10px;
+    color: white;
+    padding: 10px 20px; 
+    text-decoration: none;
+    border-radius: 5px;
 }
 footer{
   background-color: black;
@@ -445,6 +492,14 @@ footer{
     top: -20px
 
 }
+.aanmaken{
+    position: relative;
+    justify-content: center;
+    left: 35%;
+    top: -20px;
+    height: 50px;
+
+}
 .Submit-menu{
     background-color: #50c878ef;
     color: white;
@@ -474,6 +529,63 @@ footer{
 .menu{
     display: none;
 }
+.verwijder-Ja{
+    background-color: #50c878ef;
+    position: relative;
+    width: 120px;
+    height: 50px;
+    border-radius: 20px;
+    border: none;
+    align-self: center;
+    text-decoration: none;
+    text-align: center;
+    left: -20px; 
+    top: 10px;
+}
+.verwijder-Nee{
+    background-color: #50c878ef;
+    position: relative;
+    width: 120px;
+    height: 50px;
+    border-radius: 20px;
+    border: none;
+    align-self: center;
+    text-decoration: none;
+    text-align: center;
+    left: 20px; 
+    top: 2.5px;
+}
+.account-deleted{
+    border: solid 20px #50c878ef;
+}
+.Registreer-button{
+    background-color: #50c878ef;
+    position: relative;
+    border-radius: 20px;
+    border: none;
+    text-decoration: none;
+    top: 10px;
+}
+#Account-aanmaken{
+    background-color: #50c878ef;
+    position: relative;
+    border-radius: 20px;
+    border: none;
+    text-decoration: none;
+    top: 10px;
+    width: 30vh;
+    height: 30px;
+}
+ .Account-button{
+    background-color: #50c878ef;
+    position: relative;
+    width: 10%;
+    padding: 10px;
+    border-radius: 20px;
+    border: none;
+    top: 10px;
+    left: 30px;
+ }
 @media (max-width: 480px){
     .Block{
         width: 90vw;
@@ -486,6 +598,11 @@ footer{
         width: 98vw;
         padding: 10px;
         left: 50%;
+    }
+    .Game-block2{
+        width: 98vw;
+        padding: 10px;
+        transform: translate(10%, 50%);
     }
     .Game-img{
         border-radius: 8px;
@@ -702,7 +819,7 @@ footer{
         text-align: center;
         margin-top: 20vh;
     }
-    #username, #email, #password{
+    #username, #email, #password ,#gebruikersnaam , #wachtwoord{
         font-size: 18px;
         margin: 10px;
         text-align: center;
