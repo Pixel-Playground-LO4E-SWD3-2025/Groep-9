@@ -1,32 +1,28 @@
 <?php
-require_once 'connection.php';
+require 'connection.php';
+session_start();
+var_dump($_SESSION);
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_POST['naam'])) {
-    $naam = $_POST['naam'];
-    $stmt = $conn->prepare("INSERT INTO vrienden (naam) VALUES (:naam)");
-    $stmt->bindParam(':naam', $naam);
-    $stmt->execute();
-}
+$current_id = $_SESSION['id'] ?? 0;
 
-$result = $conn->query("SELECT * FROM vrienden ORDER BY id DESC");
+$stmt = $conn->prepare("SELECT id, username FROM users WHERE id != :current_id");
+$stmt->bindParam(':current_id', $current_id, PDO::PARAM_INT);
+$stmt->execute();
+$users = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
-<!DOCTYPE html>
-<html lang="nl">
-<head>
-    <meta charset="UTF-8">
-    <title>Vriendenlijst</title>
-</head>
-<body>
-    <h2>Vriendenlijst</h2>
-    <form method="post">
-        <input type="text" name="naam" placeholder="Naam van vriend" required>
-        <button type="submit">Toevoegen</button>
-    </form>
-    <ul>
-        <?php while($row = $result->fetch()): ?>
-            <li><?= htmlspecialchars($row->naam) ?></li>
-        <?php endwhile; ?>
-    </ul>
-</body>
-</html>
+<ul>
+<?php foreach ($users as $user): ?>
+    <li>
+        <?= htmlspecialchars($user['username']) ?>
+        <form action="toevoegen.php" method="POST" style="display:inline;">
+            <input type="hidden" name="vrienden_id" value="<?= $user['id'] ?>">
+            <input type="hidden" name="username" value="<?= htmlspecialchars($user['username']) ?>">
+            <button type="submit">Vriend toevoegen</button>
+        </form>
+    </li>
+<?php endforeach;
+
+
+
+?>
