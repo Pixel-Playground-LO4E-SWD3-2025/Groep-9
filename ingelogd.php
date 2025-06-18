@@ -12,10 +12,10 @@ if(!isset($_SESSION['user_id'])){
         <section>
             <video class="skycolor" autoplay loop muted src = "video/Skycolor.mp4"></video>
             <article>
-                <h1>Welcome <?php echo $_SESSION['username']; ?>!</h1>
+                <h1>Welcome <?php echo htmlspecialchars($_SESSION['username']); ?>!</h1>
                 <p>Je bent succesvol ingelogd.</p>
-                <a id="uitlogbutton" href="logout.php">Uitloggen</a>
-           </article>
+                <a id="uitlogbutton" href="logout.php" onclick= "return confirm('Weet je zeker dat je wilt uitloggen?')">Uitloggen</a>
+           </article> 
        </section>   
    </main>
 </body>

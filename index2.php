@@ -7,16 +7,28 @@
           <h1 class="welkom">Menu</h1>
        </article>
 
-        <article class="Block">
-          <P id="Head">Welcome bij PixelGame</p>
-          <p id="info">Zin in een potje gamen? Bij PixelGame zit je goed! Ontdek een wereld vol toffe, 
-                       gratis spelletjes die je direct in je browser kunt spelen. Of je nu houdt van actie, puzzels, races of klassiekers,
-                       wij hebben het allemaal. Geen installatie, geen wachttijd… gewoon klikken en spelen!</p>
-        </article>
-            <article class="Scoreboard">
-           <p id="score">Highscore:</p>
-        </article>
-     </section>
+      <article class="Block">
+          <section class="Slide">
+            <img src="img/pixel-logo.png" alt="Slide 1" class="Slide-image">
+          <P class="Slide-text">Welkom bij PixelGame</p>
+         </section>
+
+         <section class="Slide">
+          <img src="img/RockPaperScissors.png" alt="slide 2" class="Slide-image2">
+          <p class="Slide-text">Ontdek de wereld vol gratis spelletjes in je browser!</p>
+        </section>
+
+        <section class="Slide">
+          <img src="img/Dino.png" alt="slide 3" class="Slide-image2">
+          <p class="Slide-text">Geniet van een verscheidenheid aan spellen.</p>
+        </section>
+      </article>
+
+       <article class="Scoreboard">
+        <p id="score">Highscore:</p>
+      </article>
+      <script src="js/Slideshow.js" defer></script>
+    </section>
 </main>
 </body>
 <?php require_once 'footer.php'; ?>

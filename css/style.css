@@ -24,7 +24,6 @@ section{
 .Block{
     display: flex;
     justify-content: center;
-    background-color: black;
     width: 45vw;
     height: 50vh;
     position: absolute;
@@ -55,6 +54,65 @@ section{
     outline-style: solid;
     outline-width: 5px;
     left: -20vw;
+}
+.Slide-text{
+    position: absolute;
+    top: 45.4%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.Slide{
+    display: none;
+    animation: fade 1s ease-in-out;
+    text-align: center;
+}
+.Slide.active{
+    display: block;
+}
+
+.Slide-image{
+    color: white;
+    font-size: 1.2rem;
+    margin-top: 20px;
+    width: 45vw;
+    height: 40vh;
+    object-fit: cover;
+}
+.Slide-image2{
+    color: white;
+    font-size: 1.2rem;
+    margin-top: 0px;
+    width: 45vw;
+    height: 50vh;
+    object-fit: cover;
+    border-radius: 20px;
+}
+
+@keyframes fade{
+    from{
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+
+}
+#Head{
+    color: white;
+    margin: 20px;
+    font-size: 30px;
+}
+#info{
+    color: white;
+    font-size: 20px;
+    margin: 20px;
+    text-align: center;
+    bottom: 70px;
+    position: absolute;
 }
 .Scoreboard{
     display: flex;
@@ -113,20 +171,6 @@ p{
     align-items: center;
     z-index: -10;
     
-}
-
-#Head{
-    color: white;
-    margin: 20px;
-    font-size: 30px;
-}
-#info{
-    color: white;
-    font-size: 20px;
-    margin: 20px;
-    text-align: center;
-    bottom: 70px;
-    position: absolute;
 }
 #score{
     color: white;
@@ -258,7 +302,7 @@ nav a:hover{
 
 }
 #uitlogbutton2{
-     background-color: #50c878ef;
+    background-color: #50c878ef;
     position: relative;
     width: 100px;
     padding: 15px;
@@ -284,12 +328,17 @@ nav a:hover{
     left: 15%;
     top: 10vh;
 }
+.success{
+    color: green;
+    font-size: 20px;
+    margin-top: 20px;
+}
 .profielpagina{
     justify-content: center;
     align-items: center;
     background-color: black;
     width: 75vh;
-    height: 75vh;
+    height: 85vh;
     position: absolute;
     z-index: 1;
     border-radius: 20px;
@@ -303,15 +352,10 @@ nav a:hover{
 
 
 }
-.ProfielPage{
-    width: 100px;
-    height: 100px;   
-}
-
 footer{
   background-color: black;
   width: 100vw;
-  padding: 80px;
+  padding: 105px;
   height: auto;
   position: relative;
   z-index: 2;
@@ -383,6 +427,348 @@ footer{
     color: white;
     position: absolute;
     top: 80%;
-    left: 84%;
+    left: 80%;
     font-size: 15px;  
-}   
+}
+.Label-menu{
+    position: relative;
+    justify-content: center;
+    display:flex;
+    margin-bottom: 20px;
+
+
+}
+.Input-menu{
+    position: relative;
+    justify-content: center;
+    left: 35%;
+    top: -20px
+
+}
+.Submit-menu{
+    background-color: #50c878ef;
+    color: white;
+    border: none;
+    position: relative;
+    width: 150px;
+    padding: 15px;
+    border-radius: 20px;
+    border: none;
+    top: 7.5vh;
+    left: 36%;
+    text-decoration: none;
+    text-align: center;   
+}
+.profielPage{
+    width: 65px;
+    height: 65px;
+    position: absolute;
+    top: 0;
+    left: 5px;
+    margin-top: 6px;
+    z-index: 10;
+    border: 2px solid #50c878ef;
+    border-radius: 50%;
+    object-fit: cover;
+}
+.menu{
+    display: none;
+}
+@media (max-width: 480px){
+    .Block{
+        width: 90vw;
+        height: 60vh;
+        margin: 0 auto;
+        border: solid 5px #50c878ef;
+        border-radius: 20px;   
+    }
+    .Game-block{
+        width: 98vw;
+        padding: 10px;
+        left: 50%;
+    }
+    .Game-img{
+        border-radius: 8px;
+    }
+    .Gamenaam{
+        font-size: 1.3rem;
+        text-align: center;
+        margin-top: -25vh;
+    }
+    .Gameinfo
+    {
+        font-size: 0.5rem;
+        text-align: center;
+        margin-top: 10vh;
+        position: relative;
+    }
+    .profielPage{
+        width: 50px;
+        height: 50px;
+        position: absolute;
+        top: 0;
+        left: 5px;
+        margin-top: 6px;
+    }
+    .footer-logo{
+        position: absolute;
+        width: 75px;
+        height: 75px;
+        margin-bottom: -50px;
+        left: 10px;
+    }
+    #Watermark{
+        color: white;
+        position: relative;
+        left: 85%;
+        width: 30vw;
+        font-size: 12px;
+        bottom: -12vh;
+    }
+    .logo{
+        position: absolute;
+        left: 10px;
+        width: 50px;
+        height: 45px;
+        top: 0px;
+    }
+    .menu{
+        color: white;
+        font-size: 24px;
+        border: none;
+        position: absolute;
+        right: 15px;
+        top: 15px; 
+        background: transparent; 
+        display: block;
+    }
+    nav.menu-open a{   
+        display: block;
+        
+    }
+    nav{
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 10vh;
+        background-color: black;
+        z-index: 10;
+    }
+    nav a{
+        padding-left: 20px;
+        text-decoration: none;
+        padding: 10px;
+        display: none;
+        color:white;
+        background-color:  black;
+        font-size: 1.2rem;
+        text-align: center;
+        border: none;
+        
+    }
+    nav a:hover{
+        color: #50c878ef
+    }
+    .Slide-image{
+        width: 150vw;
+        transform: scale(0.5);
+        margin-left: -30vw;
+        
+    }
+    .Slide-image2{
+        width: 87vw;
+        height: 59vh;
+        border-radius: 10px;
+    }
+    .Slide-text{
+        font-size : 1.2rem;
+        color: white;
+        position: absolute;
+        top: 48%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+    }
+    .welkom{
+        margin-top: -40vh;
+        z-index: 2;
+    }
+    .welkom h1{
+        font-size: 2.5rem;
+        color: white;
+        text-align: center;
+    }
+    .welkom p{
+        font-size: 1.2rem;
+        color: white;
+        text-align: center;
+        margin-top: 10px;
+    }
+    #Head{
+        font-size: 2rem;
+        color: white;
+        text-align: center;
+        margin-top: 20px;
+        text-align: center;
+    }
+    #info{
+        font-size: 1.2rem;
+        color: white;
+        text-align: center;
+        margin-top: 10px;
+        position: relative;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        text-align: center;
+    }
+    .Gameinfo{
+        font-size: 1rem;
+        color: white;
+        text-align: center;
+        margin-bottom: -50%;
+        width: 95%;
+        position: absolute;
+        top: 70%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+    .Gamenaam{
+        font-size: 2rem;
+        color: white;
+        text-align: center;
+        margin-bottom: 50%;
+        width: 100%;
+        position: absolute;
+        top: 60%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+    #playAudio{
+        position: absolute;
+        bottom: 30px;
+        right: 8vw;
+        display: flex;
+        align-items: center;
+        opacity: 0.7;
+        align-items: center;
+        width: 110px;
+        padding: 8px;
+        border-radius: 20px;
+        z-index: 10;
+        border: none;
+    
+    }
+    .Scoreboard{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: black;
+        width: 90vw;
+        height: 15vh;
+        position: absolute;
+        bottom: 6px;
+        border-radius: 20px;
+        align-items: center;
+        transform: translate(-33%, 0%);
+    }
+    .spel button{
+        font-size: 4rem;
+        margin : 0 10px;
+        min-width: 100px;
+        border-radius: 50%;
+        background-color: #008d78;
+        border: 0;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+    .spel button:hover{
+        background-color: #8cbdb0;
+    }
+    #score{
+        font-size: 1.2rem;
+        color: white;
+        margin : 10px;
+        bottom : 30px;
+        position: absolute;
+        left: 1.5%;
+        transform: translate(0, 0);
+    }
+    #loginwoord{
+        font-size: 40px;
+        margin: 20px;
+        position: relative;
+        text-align: center;
+        margin-top: 20vh;
+    }
+    #username, #email, #password{
+        font-size: 18px;
+        margin: 10px;
+        text-align: center;
+        bottom: 0vh;
+        position: relative;
+        left: 0%;
+        width: 90%;
+        padding: 10px;
+        border-radius: 20px;
+        
+    }
+    #inlogbutton{
+        background-color: #50c878ef;
+        position: relative;
+        width: 90%;
+        padding: 15px;
+        border-radius: 20px;
+        border: none;
+        left: 3%;
+        top: 3vh;
+        background-color: #50c878ef;
+    }
+    .profielpagina{
+        justify-content: center;
+        align-items: center;
+        background-color: black;
+        width: 90vw;
+        height: 85vh;
+        position: absolute;
+        z-index: 1;
+        border-radius: 20px;
+        top: 55%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        outline: #50c878ef solid 5px;
+        padding: 20px
+    }
+    #editprofiel, #uitlogbutton2{
+        background-color: #50c878ef;
+        position: relative;
+        width: 90%;
+        padding: 15px;
+        border-radius: 20px;
+        border: none;
+        text-decoration: none;
+        text-align: center;
+        margin-bottom: -50vh;
+        margin-left: -5%;
+    }
+    .Label-menu{
+        position: relative;
+        justify-content: center;
+        display: flex;
+        gap: 10px;
+        text-align: center;
+    }
+    .Input-menu , .Submit-menu{
+        color: white;
+        border: none;
+        position: relative;
+        width: 90%;
+        padding: 15px;
+        border-radius: 20px;
+        border: none;
+        align-items: center;
+        transform: translate(-33%, -0%);
+    }
+
+}

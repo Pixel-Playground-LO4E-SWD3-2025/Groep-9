@@ -14,10 +14,12 @@ if (session_status() == PHP_SESSION_NONE){
     <title>PixelGame</title>
     <link rel="stylesheet" href="css/style.css">
     <script src="js/game.js" defer></script>
+    <script src="js/Navbar.js" defer></script>
 </head>
 <header>
     <nav> 
      <img src="img/panther.png" alt="Logo" class="logo">
+     <button class="menu">&#9776;</button>
      <a href="index.php">Home</a>
      <a href="Game-menu.php">Games</a>
      <a href="over_ons.php">Over ons</a>

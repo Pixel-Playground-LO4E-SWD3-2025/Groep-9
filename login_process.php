@@ -40,36 +40,39 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
         echo "<p>Database connectie wordt gemaakt...</p>";
 
         $stmt = $conn -> prepare("SELECT * FROM users WHERE username = :username AND email = :email");
-        $stmt ->bindParam('username', $username);
-        $stmt ->bindParam('email', $email);
+        $stmt ->bindParam(':username', $username);
+        $stmt ->bindParam(':email', $email);
         $stmt -> execute();
 
         if ($stmt-> rowCount() > 0 ){
-            $user = $stmt ->fetch();
+            $user = $stmt ->fetch(PDO ::FETCH_ASSOC);
             echo "<p>Gebruiker gevonden, wachtwoord wordt gecontroleerd...</p>";
-            if ($password == $user->password){
+            
+            if (password_verify($password, $user['password'])){
                 echo "<p>Wachtwoord correct!</p>";
 
-                $_SESSION['user_id'] = $user->id;
-                $_SESSION['username'] = $user->username;
+                $_SESSION['user_id'] = $user['id'];
+                $_SESSION['username'] = $user['username'];
 
                 echo "<p>Redirecting naar index.php in 3 seconden...</p>";
                 header('Location: ingelogd.php');
+                exit();
 
             }else{
                 $_SESSION['error'] = "Onjuiste wachtwoord";
-                echo "<p>Fout: Onjuiste wachtwoord</p>";
-                echo "<a href='inloggen.php'>Terug naar login</a>";
+                header('location: inloggen.php');
+                exit();
             }
         }else{
             $_SESSION['error'] = "Gebruiker niet gevonden";
-            echo "<p> Fout: Gebruiker niet gevonden</p>";
-            echo "<a href='inloggen.php'>Terug naar login</a>";
+            header('location: inloggen.php');
+            exit();
         }
     }catch(PDOException $e){
-        $_SESSION['error'] = "Database fout: " . $e->getMessage();
-        echo "<p>Database fout: " . $e->getMessage() . "</p>";
-        echo "<a href='inloggen.php'>Terug naar login</a>";
+        error_log("Database fout:" . $e->getMessage());
+        $_SESSION['error'] = "Er is een fout opgetreden. probeer het later opnieuw.";
+        header('location: inloggen.php');
+        exit();
     }
 
 ?>
