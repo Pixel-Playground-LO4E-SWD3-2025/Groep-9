@@ -270,7 +270,7 @@ nav a:hover{
     border-radius: 20px;
     top: 0;
 }
-#email{
+#gebruikersnaam, #email ,#wachtwoord{
     font-size: 20px;
     margin: 20px;
     text-align: center;
@@ -492,6 +492,14 @@ footer{
     top: -20px
 
 }
+.aanmaken{
+    position: relative;
+    justify-content: center;
+    left: 35%;
+    top: -20px;
+    height: 50px;
+
+}
 .Submit-menu{
     background-color: #50c878ef;
     color: white;
@@ -558,6 +566,26 @@ footer{
     text-decoration: none;
     top: 10px;
 }
+#Account-aanmaken{
+    background-color: #50c878ef;
+    position: relative;
+    border-radius: 20px;
+    border: none;
+    text-decoration: none;
+    top: 10px;
+    width: 30vh;
+    height: 30px;
+}
+ .Account-button{
+    background-color: #50c878ef;
+    position: relative;
+    width: 10%;
+    padding: 10px;
+    border-radius: 20px;
+    border: none;
+    top: 10px;
+    left: 30px;
+ }
 @media (max-width: 480px){
     .Block{
         width: 90vw;
@@ -791,7 +819,7 @@ footer{
         text-align: center;
         margin-top: 20vh;
     }
-    #username, #email, #password{
+    #username, #email, #password ,#gebruikersnaam , #wachtwoord{
         font-size: 18px;
         margin: 10px;
         text-align: center;

@@ -1,5 +1,6 @@
 <?php require_once 'header.php'; ?>
 <?php 
+include_once 'connection.php'; 
 
 if(isset($_POST['registreer'])){
 
@@ -11,17 +12,33 @@ if(isset($_POST['registreer'])){
         $error = "Vul alles in!";
     }
     else{
-        $wachtwoord_hash = password_hash($wachtwoord);
+        try{
+        $wachtwoord_hash = password_hash($wachtwoord, PASSWORD_DEFAULT);
 
-        $insertUser = "INSERT INTO users(gebruikersnaam, email, wachtwoord) VALUES (? , ? , ?)";
+        $insertUser = "INSERT INTO users(username, email, password) VALUES (? , ? , ?)";
         $stmt = $conn->prepare($insertUser);
         $stmt ->execute([$gebruikersnaam, $email, $wachtwoord_hash]);
 
+        $_SESSION['login'] = true;
+        $_SESSION['gebruikersnaam'] = $gebruikersnaam;
+
+        header('Location: inloggen.php');
+        exit();
+
         $success = "Account is successvol gemaakt!";
+      
+    
         
-    }#catch(PDOException $e){
-       # $error = "Er ging iets mis bij het maken van je account.";
-    #}
+    }catch(PDOException $e){
+       $error = "Er ging iets mis bij het maken van je account.";
+    }
   
+
+  
+  }
 }
 ?>
+
+
+
+

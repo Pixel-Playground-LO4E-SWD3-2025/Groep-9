@@ -57,7 +57,7 @@ if(isset($_POST['Confirm_delete']) && $_POST['Confirm_delete'] == 'Nee'){
                         Nee, ga terug
                     </button>
                 </form>
-                <a class="Registreer-button" href="Registreer.php">Registreer een nieuw account</a>
+                <a class="Registreer-button" href="Registreer-html.php">Registreer een nieuw account</a>
             </article>
         </section>
    </main>
