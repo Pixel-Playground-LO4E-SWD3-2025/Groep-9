@@ -22,7 +22,7 @@
                   Overleef zo lang mogelijk!?!</p>
                   <button class="ingang" onclick="location.href='dino-game.php'">Play Games</button>
               </article>
-        </section>      
+        </section>  
 </main>
 </body>
 
