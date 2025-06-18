@@ -1,19 +1,69 @@
 <?php
-$servername="127.0.0.1";
-$username="root";
-$password="benji";
-$dbname="Project";
+ 
+class Database {
 
-// $conn =new mysqli($servername, $username, $password, $dbname);
+    private static ?Database $instance = null;
 
-try {
-    $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+    private PDO $connection;
+ 
+    // Private constructor zodat er geen directe instantie van buitenaf kan worden gemaakt
 
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    private function __construct() {
 
-    $conn->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
-    
-} catch(PDOException $e) {
-    die("Verbinding mislukt: " . $e->getMessage());
+      $servername="127.0.0.1";
+      $username="root";
+      $password="benji";
+      $dbname="Project";
+ 
+        $dsn = "mysql:host=$servername;dbname=$dbname;charset=utf8mb4";
+ 
+        try {
+
+            $this->connection = new PDO($dsn, $username, $password);
+
+            $this->connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+        } catch (PDOException $e) {
+
+            die('Database connectie mislukt: ' . $e->getMessage());
+
+        }
+
+    }
+ 
+    // Statische methode om de enige instantie van de class op te halen
+
+    public static function getInstance(): Database {
+
+        if (self::$instance === null) {
+
+            self::$instance = new Database();
+
+        }
+
+        return self::$instance;
+
+    }
+ 
+    // Methode om de PDO-verbinding op te halen
+
+    public function getConnection(): PDO {
+
+        return $this->connection;
+
+    }
+
 }
+ 
+// Voorbeeld van gebruik:
+
+$db = Database::getInstance();
+
+$conn = $db->getConnection();
+ 
+// Query voorbeeld:
+
+$stmt = $conn->query("SELECT * FROM users");
+
 ?>
+ 
