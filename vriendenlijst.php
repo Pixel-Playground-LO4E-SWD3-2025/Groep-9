@@ -1,54 +1,62 @@
 <?php
-require 'connection.php';
 session_start();
-
-$stmt = $conn->prepare("SELECT * FROM vrienden WHERE vrienden_id = :id AND accepted = 0");
-$stmt->bindParam(':id', $_SESSION['id'], PDO::PARAM_INT);
-$stmt->execute();
-
-// hier onder mag een if statement komen die controleert of er geen records zijn gevonden,
-// als die er wel zijn dan echo je deze met een accept or decline knop, als die er niet zijn dan echo je wat er al staat
-
-if ($stmt ->rowCount() > 0) {
-    ?>
-    <ul>
-<?php foreach ($users as $user): ?>
-    <li>
-        <?= htmlspecialchars($user['username']) ?>
-        <form action="toevoegen.php" method="POST" style="display:inline;">
-            <input type="hidden" name="vrienden_id" value="<?= $user['id'] ?>">
-            <button type="submit">Vriend toevoegen</button>
-        </form>
-    </li>
-<?php endforeach; ?>
-    <li>
-        <?= htmlspecialchars($user['username']) ?>
-        <form action="toevoegen.php" method="POST" style="display:inline;">
-            <input type="hidden" name="vrienden_id" value="<?= $user['id'] ?>">
-            <button type="submit">Vriend afwijzen</button>
-        </form>
-
-            <form action="toevoegen.php" method="POST" style="display:inline;">
-            <input type="hidden" name="vrienden_id" value="<?= $user['id'] ?>">
-            <input type="hidden" name="afwijzen" value="afwijzen">
-            <button type="submit">Vriend afwijzen</button>
-        </form>
-    </li>
-<?php   
-} else {
-
+require_once 'connection.php';
+require_once 'header.php';
+if (!isset($_SESSION['id'])) {
+    header("Location: inloggen.php");
+    exit();
 }
 
-$current_id = $_SESSION['id'] ?? 0;
+$huidige_gebruiker_id = $_SESSION['id'];
 
-$stmt = $conn->prepare("SELECT id, username FROM users WHERE id != :current_id");
-$stmt->bindParam(':current_id', $current_id, PDO::PARAM_INT);
-$stmt->execute();
-$users = $stmt->fetchAll(PDO::FETCH_ASSOC);
+// Haal alle geaccepteerde vrienden op (waar jij gebruiker of vriend bent)
+$query = $conn->prepare(
+    "SELECT gebruikersnaam.username, 
+            CASE 
+                WHEN vrienden.gebruiker_id = :huidige_gebruiker_id THEN vrienden.vrienden_id 
+                ELSE vrienden.gebruiker_id 
+            END AS vriend_id
+     FROM vrienden
+     JOIN users AS gebruikersnaam ON gebruikersnaam.id = CASE 
+                                WHEN vrienden.gebruiker_id = :huidige_gebruiker_id THEN vrienden.vrienden_id 
+                                ELSE vrienden.gebruiker_id 
+                            END
+     WHERE vrienden.accepted = 1 
+       AND (vrienden.gebruiker_id = :huidige_gebruiker_id OR vrienden.vrienden_id = :huidige_gebruiker_id)"
+);
+$query->bindParam(':huidige_gebruiker_id', $huidige_gebruiker_id, PDO::PARAM_INT);
+$query->execute();
+$vrienden_lijst = $query->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
-
-
-
-
-?>
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <title>Geaccepteerde vrienden</title>
+     <video class="skycolor" autoplay loop muted src = "video/Skycolor.mp4"></video>
+</head>
+<body>
+<section class="vriendenlijst-container">
+    <h2>Jouw vrienden</h2>
+    <a href="vrienden_toevoegen.php">
+        <button type="button">Vriend toevoegen</button>
+    </a>
+    <?php if (count($vrienden_lijst) > 0): ?>
+        <ul class="vriendenlijst">
+            <?php foreach ($vrienden_lijst as $vriend): ?>
+                <li>
+                    <?= htmlspecialchars($vriend['username']) ?>
+                    <form action="verwijdervriend.php" method="POST" style="display:inline;">
+                        <input type="hidden" name="vriend_id" value="<?= $vriend['vriend_id'] ?>">
+                        <button type="submit" onclick="return confirm('Weet je zeker dat je deze vriend wilt verwijderen?');">Verwijder</button>
+                    </form>
+                </li>
+            <?php endforeach; ?>
+        </ul>
+    <?php else: ?>
+        <p>Je hebt nog geen vrienden geaccepteerd.</p>
+    <?php endif; ?>
+    </section>
+</body>
+</html>
