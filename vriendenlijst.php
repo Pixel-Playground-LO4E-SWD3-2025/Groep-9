@@ -1,7 +1,6 @@
 <?php
 session_start();
 require_once 'connection.php';
-require_once 'header.php';
 if (!isset($_SESSION['id'])) {
     header("Location: inloggen.php");
     exit();

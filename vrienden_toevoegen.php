@@ -12,13 +12,14 @@ $verzoeken = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 // Toon vriendschapsverzoeken
 if (count($verzoeken) > 0) {
-    echo "<h3>Vriendschapsverzoeken:</h3><ul class='vriendenlijst'>";
+    echo "<h3>Vriendschapsverzoeken:</h3><ul>";
     foreach ($verzoeken as $verzoek) {
         echo "<li>";
         echo htmlspecialchars($verzoek['username']) . " wil vrienden worden.";
         echo "
-            <form action='vriendenvoegen.php' method='POST' style='display:inline;'>
-                <input type='hidden' name='vrienden_id' value='" . htmlspecialchars($verzoek['gebruiker_id']) . "'>
+        
+            <form action='acceptatie_wijzigen.php' method='POST' style='display:inline;'>
+                <input type='hidden' name='vrienden_id' value='" . htmlspecialchars($verzoek['username']) . "'>
                 <button type='submit'>Accepteer</button>
             </form>
             <form action='vriendafwijzen.php' method='POST' style='display:inline;'>
@@ -30,7 +31,7 @@ if (count($verzoeken) > 0) {
     }
     echo "</ul>";
 } else {
-    echo "<p class='success'>Je hebt geen nieuwe vriendschapsverzoeken.</p>";
+    echo "<p>Je hebt geen nieuwe vriendschapsverzoeken.</p>";
 }
 
 // Alle andere gebruikers ophalen
@@ -40,7 +41,7 @@ $stmt->execute();
 $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 // Toon alle gebruikers
-echo "<h3>Alle gebruikers:</h3><ul class='vriendenlijst'>";
+echo "<h3>Alle gebruikers:</h3><ul>";
 foreach ($users as $user) {
     echo "<li>";
     echo htmlspecialchars($user['username']);
