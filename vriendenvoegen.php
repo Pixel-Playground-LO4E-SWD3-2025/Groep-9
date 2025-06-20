@@ -20,7 +20,6 @@ $db = Database::getInstance();
 $conn = $db->getConnection();
 session_start();
 
-var_dump($_POST);
 if (isset($_POST['vrienden_id']))
     echo "<p>Gebruiker gevonden!</p>";  
 {
@@ -38,6 +37,7 @@ if (isset($_POST['vrienden_id']))
     if ($current_id && $vrienden_id) {
         if ($exists) {
             echo "<p>Je hebt deze gebruiker al als vriend toegevoegd of er is al een verzoek.</p>";
+                            header("Location: vriendenlijst.php");
         } else {
             try {
                 $accepted = 0;
