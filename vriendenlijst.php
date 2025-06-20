@@ -1,20 +1,16 @@
 <?php
 session_start();
 require_once 'connection.php';
+require_once 'header.php';
 $db = Database::getInstance();
 $conn = $db->getConnection();
+
 if (!isset($_SESSION['id'])) {
     header("Location: inloggen.php");
     exit();
 }
 
 $huidige_gebruiker_id = $_SESSION['id'];
-
-// Zoekformulier tonen
-echo '<form method="GET" action="">
-    <input type="text" name="zoek" placeholder="Zoek vriend..." value="' . (isset($_GET['zoek']) ? htmlspecialchars($_GET['zoek']) : '') . '">
-    <button type="submit">Zoeken</button>
-</form>';
 
 // Zoekopdracht verwerken voor vriendenlijst
 $zoek = $_GET['zoek'] ?? '';
@@ -91,5 +87,12 @@ $vrienden_lijst = $query->fetchAll(PDO::FETCH_ASSOC);
     <?php else: ?>
         <p>Je hebt nog geen vrienden geaccepteerd.</p>
     <?php endif; ?>
+
+    <!-- Zoekbalk onderaan -->
+    <form class="vrienden-zoek-form" method="GET" action="">
+        <input type="text" name="zoek" placeholder="Zoek vriend..." value="<?= isset($_GET['zoek']) ? htmlspecialchars($_GET['zoek']) : '' ?>">
+        <button type="submit">Zoeken</button>
+    </form>
 </section>
-</body> 
+</body>
+</html>

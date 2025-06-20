@@ -13,7 +13,6 @@ if (session_status() == PHP_SESSION_NONE){
     <meta name="author" content="David">
     <title>PixelGame</title>
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/highscores.css">
     <script src="js/game.js" defer></script>
     <script src="js/Navbar.js" defer></script>
 </head>

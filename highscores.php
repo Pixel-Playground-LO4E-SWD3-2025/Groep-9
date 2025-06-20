@@ -15,11 +15,8 @@ $selected_game = $_GET['game'] ?? null;
 <main>
     <section class="highscores-container">
         <video class="skycolor" autoplay loop muted src="video/Skycolor.mp4"></video>
-        <article>
-            <h1 class="highscores-title">Highscores</h1>
-        </article>
-
         <article class="highscores-scoreboard">
+            <h1 class="highscores-title">Highscores</h1>
             <?php if ($selected_game && in_array($selected_game, $games)): ?>
                 <h2 class="highscores-game-title"><?= htmlspecialchars($selected_game) ?> - Alle highscores</h2>
                 <ul class="highscores-table">

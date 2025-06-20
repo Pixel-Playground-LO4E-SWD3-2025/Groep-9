@@ -923,6 +923,7 @@ footer{
     max-width: 600px;
     width: 95vw;
     padding-bottom: 32px;
+    box-sizing: border-box;
 }
 
 /* Titel */
@@ -939,7 +940,8 @@ ul.vriendenlijst {
     padding: 0;
     margin: 4px auto 0 auto;
     max-width: 600px;
-    width: 95vh;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 ul.vriendenlijst li {
@@ -952,6 +954,7 @@ ul.vriendenlijst li {
     align-items: center;
     box-shadow: 0 1px 6px rgba(0,0,0,0.07);
     font-size: 1.1rem;
+    box-sizing: border-box;
 }
 
 ul.vriendenlijst li form {
@@ -1019,43 +1022,278 @@ ul.vriendenlijst li button:hover {
     }
 }
 
-.highscore-flex {
+.highscores-scoreboard {
+    margin: 40px auto 0 auto;
+    padding: 24px 32px;
+    background: rgba(255,255,255,0.92);
+    border-radius: 16px;
+    box-shadow: 0 4px 32px rgba(0,0,0,0.08);
+    max-width: 700px;
+    width: fit-content;
+    min-width: 280px;
     display: flex;
     flex-direction: column;
-    gap: 12px;
-    margin: 40px 0 30px 0;
+    align-items: center;
+    max-height: 500px;      /* Maximale hoogte */
+    overflow-y: auto;       /* Maak het geheel scrolbaar */
+}
+
+.highscores-table {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto 24px auto;
     padding: 0;
     list-style: none;
-    width: 100%;
-    align-items: center;
-}
-
-.highscore-flex li {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.1rem;
-    color: #222;
-    width: 100%;
-    max-width: 500px;
-    background: #fff;
+    background: transparent;
     border-radius: 12px;
-    box-shadow: 0 1px 6px rgba(0,0,0,0.07);
-    padding: 16px 24px;
+    /* Verwijder max-height en overflow-y hier! */
 }
 
-.highscore-flex li span {
-    display: inline-block;
-    min-width: 120px;
-    margin-right: 32px;
+.highscores-header {
+    font-weight: bold;
+    background: #f2f2f2;
+    border-bottom: 2px solid #50c878ef;
+    display: block;
+    /* position: sticky;
+    top: 0;
+    z-index: 2; */
+}
+
+.highscores-row {
+    display: block;
+    padding: 8px 0;
+    border-bottom: 1px solid #e0e0e0;
+    background: none;
     font-size: 1.1rem;
     color: #222;
+}
+
+.highscores-row span {
+    display: block;
+    min-width: 0;
+    width: auto;
+    text-align: left;
+    font-size: 1.1rem;
+    color: #222;
+    margin-bottom: 2px;
+}
+
+.highscores-row span:last-child {
+    font-weight: bold;
+    color: #008d78;
+    margin-bottom: 0;
+}
+
+.highscores-title {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 24px;
+}
+
+.highscores-game-title {
+    font-size: 1.3rem;
+    margin: 24px 0 8px 0;
     text-align: center;
 }
 
-.highscore-flex li span:last-child {
+.highscores-btn {
+    margin-top: 16px;
+    padding: 8px 24px;
+    border-radius: 8px;
+    border: none;
+    background: #50c878ef;
+    color: #fff;
     font-weight: bold;
-    color: #008d78;
-    margin-right: 0;
+    cursor: pointer;
 }
+
+
+@media (max-width: 700px) {
+    .highscores-scoreboard {
+        max-width: 208vw;
+        min-width: 60vw;
+        padding: 12px 2vw;
+        font-size: 1rem;
+    }
+    .highscores-table {
+        max-width: 98vw;
+        font-size: 1rem;
+    }
+    .highscores-header span,
+    .highscores-row span {
+        font-size: 1rem;
+        word-break: break-all;
+    }
+    .highscores-game-title {
+        font-size: 1.1rem;
+        margin: 16px 0 6px 0;
+    }
+    .highscores-title {
+        font-size: 1.3rem;
+        margin-bottom: 16px;
+    }
+    .highscores-btn {
+        width: 100%;
+        padding: 10px 0;
+        font-size: 1rem;
+    }
+}
+
+.vrienden-zoek-form {
+    width: 100%;
+    max-width: 400px;
+    margin: 32px auto 0 auto;
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+}
+
+.vrienden-zoek-form input[type="text"] {
+    flex: 1;
+    padding: 16px 18px;
+    border-radius: 10px;
+    border: 1.5px solid #50c878ef;
+    font-size: 1.2rem;
+    background: #fff;
+}
+
+.vrienden-zoek-form button[type="submit"] {
+    padding: 16px 28px;
+    border-radius: 10px;
+    border: none;
+    background: #50c878ef;
+    color: #fff;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+.vrienden-zoek-form button[type="submit"]:hover {
+    background: #008d78;
+}
+
+@media (max-width: 600px) {
+    .vrienden-zoek-form {
+        flex-direction: column;
+        gap: 8px;
+        max-width: 98vw;
+    }
+    .vrienden-zoek-form input[type="text"],
+    .vrienden-zoek-form button[type="submit"] {
+        font-size: 1rem;
+        padding: 12px 8px;
+        width: 100%;
+    }
+}
+
+.vrienden-zoek-form {
+    width: 100%;
+    max-width: 400px;
+    margin: 32px auto 0 auto;
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+}
+
+.vrienden-zoek-form input[type="text"] {
+    flex: 1;
+    padding: 16px 18px;
+    border-radius: 10px;
+    border: 1.5px solid #50c878ef;
+    font-size: 1.2rem;
+    background: #fff;
+}
+
+.vrienden-zoek-form button[type="submit"] {
+    padding: 16px 28px;
+    border-radius: 10px;
+    border: none;
+    background: #50c878ef;
+    color: #fff;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+.vrienden-zoek-form button[type="submit"]:hover {
+    background: #008d78;
+}
+
+@media (max-width: 600px) {
+    .vrienden-zoek-form {
+        flex-direction: column;
+        gap: 8px;
+        max-width: 98vw;
+    }
+    .vrienden-zoek-form input[type="text"],
+    .vrienden-zoek-form button[type="submit"] {
+        font-size: 1rem;
+        padding: 12px 8px;
+        width: 100%;
+    }
+}   
+
+@media (max-width: 600px) {
+    .vriendenlijst-container {
+        max-width: 99vw;
+        padding: 12px 2vw 24px 2vw;
+        box-sizing: border-box;
+    }
+    .vriendenlijst-container h2 {
+        font-size: 1.2rem;
+        margin-bottom: 12px;
+    }
+    .vriendenlijst-container h3 {
+        font-size: 1.2rem;
+        margin-bottom: 12px;
+    }
+    .vrienden-zoek-form {
+        flex-direction: column;
+        gap: 8px;
+        max-width: 98vw;
+        margin-top: 18px;
+    }
+    .vrienden-zoek-form input[type="text"],
+    .vrienden-zoek-form button[type="submit"] {
+        font-size: 1rem;
+        padding: 12px 8px;
+        width: 100%;
+    }
+    ul.vriendenlijst {
+        max-width: 100%;
+        width: 100%;
+        box-sizing: border-box;
+    }
+    ul.vriendenlijst li {
+        flex-direction: column;
+        align-items: stretch;
+        text-align: center;
+        padding: 12px 6px;
+        font-size: 1rem;
+    }
+    ul.vriendenlijst li button {
+        width: 100%;
+        margin: 8px 0 0 0;
+        font-size: 1rem;
+        padding: 10px 0;
+    }
+}
+
+header, nav {
+    height: 70px;
+    min-height: 70px;
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+}
+body {
+    padding-top: 70px;
+}
+.vriendenlijst-container {
+    margin-top: 0;
+    padding-top: 0;
+    box-sizing: border-box;
+}
+

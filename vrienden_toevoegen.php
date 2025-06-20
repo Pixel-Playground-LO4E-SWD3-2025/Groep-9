@@ -6,7 +6,7 @@ $conn = $db->getConnection();
 $current_id = $_SESSION['id'] ?? 0;
 
 // Zoekformulier tonen
-echo '<form method="GET" action="">
+echo '<form class="vrienden-zoek-form" method="GET" action="">
     <input type="text" name="zoek" placeholder="Zoek gebruiker..." value="' . (isset($_GET['zoek']) ? htmlspecialchars($_GET['zoek']) : '') . '">
     <button type="submit">Zoeken</button>
 </form>';
@@ -25,7 +25,7 @@ if (count($verzoeken) > 0) {
         echo htmlspecialchars($verzoek['username']) . " wil vrienden worden.";
         echo "
             <form action='acceptatie_wijzigen.php' method='POST' style='display:inline;'>
-                <input type='hidden' name='vrienden_id' value='" . htmlspecialchars($verzoek['username']) . "'>
+                <input type='hidden' name='username' value='" . htmlspecialchars($verzoek['username']) . "'>
                 <button type='submit'>Accepteer</button>
             </form>
             <form action='vriendafwijzen.php' method='POST' style='display:inline;'>
