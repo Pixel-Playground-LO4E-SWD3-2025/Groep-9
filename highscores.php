@@ -1,3 +1,19 @@
+
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="description" content="hier vind je de highscores van verschillende games. Bekijk de top scores en vergelijk jouw score met die van anderen.">
+    <meta name="keywords" content="highscores, games, leaderboard, scores, gaming, online games, high scores, top scores, gaming community">
+    <meta name="author" content="raay">
+    <title>Highscores</title>
+</head>
+<body>
+    
+</body>
+</html>
 <?php
 require_once 'header.php';
 require_once 'connection.php';

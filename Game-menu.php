@@ -14,13 +14,10 @@
                   <button class="ingang" onclick="location.href='Steen-papier-schaar.php'">Play Games</button>
               </article>
               <article class="Game-block2">
-                 <p class="Gamenaam">Dino Game</p>
-                 <img class="Game-img" src="img/Dino.png" alt="Dino Game">
-                 <p class="Gameinfo">Spring met de dino over rode blokken.
-                  Gebruik spatie om te springen.
-                  Raak je een blok? Dan ben je af.
-                  Overleef zo lang mogelijk!?!</p>
-                  <button class="ingang" onclick="location.href='dino-game.php'">Play Games</button>
+                 <p class="Gamenaam">tic_tac_toe</p>
+                 <img class="Game-img" src="img/tic_tac_toe.png" alt="Tic_tac_toe">
+                 <p class="Gameinfo">tic tac toe is een klassiek bordspel dat je nu online kunt spelen. Speel tegen vrienden of alleen en geniet van dit strategische spel.</p>
+                  <button class="ingang" onclick="location.href='tic_tac_toe.php'">Play Games</button>
               </article>
         </section>  
 </main>

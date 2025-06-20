@@ -58,7 +58,12 @@ $vrienden_lijst = $query->fetchAll(PDO::FETCH_ASSOC);
 <html lang="nl">
 <head>
     <meta charset="UTF-8">
-    <title>Geaccepteerde vrienden</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="description" content="hier vind je jouw vriendenlijst. Voeg vrienden toe, bekijk hun high scores en verwijder vrienden indien nodig.">
+    <meta name="keywords" content="vriendenlijst, vrienden toevoegen, vrienden verwijderen, high scores, gaming community, online games, vrienden beheren">
+    <meta name="author" content="raay">
+    <title>vriendenlijst</title>
     <link rel="stylesheet" href="css/style.css">
     <video class="skycolor" autoplay loop muted src="video/Skycolor.mp4"></video>
 </head>

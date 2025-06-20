@@ -1,3 +1,19 @@
+
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="description" content="hier kun je je highscore opslaan in onze sociale netwerk game. Sla je scores op en vergelijk ze met vrienden.">
+    <meta name="keywords" content="opslaan, highscore, game, social, network">
+    <meta name="author" content="raay">
+    <title>Home</title>
+</head>
+<body>
+    
+</body>
+</html>
 <?php
 require 'connection.php';
 session_start();

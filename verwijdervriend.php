@@ -1,3 +1,19 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="description" content="hier kun je vrienden verwijderen uit je sociale netwerk. Selecteer een vriend en verwijder de vriendschap.">
+    <meta name="keywords" content="verwijder, vriend, social, network, game">
+    <meta name="author" content="raay">
+    <title>verwijder</title>
+</head>
+<body>
+    
+</body>
+</html>
+
 <?php
 session_start();
 require_once 'connection.php';

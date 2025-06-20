@@ -1,3 +1,18 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="description" content="hier kun je vrienden toevoegen aan je sociale netwerk. Zoek naar gebruikers en stuur vriendschapsverzoeken om verbinding te maken met anderen in het spel.">
+    <meta name="keywords" content="vriend, add, request, social, network, game">
+    <meta name="author" content="raay">
+    <title>Toevoegen</title>
+</head>
+<body>
+    
+</body>
+</html>
 <?php
 require_once 'connection.php';
 require_once 'header.php';

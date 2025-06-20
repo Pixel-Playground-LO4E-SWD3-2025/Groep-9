@@ -23,7 +23,12 @@ $vriend = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <html lang="nl">
 <head>
     <meta charset="UTF-8">
-    <title>Highscore van vriend</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="description" content="highscores van vrienden bekijken. Bekijk de scores van je vrienden in verschillende games en vergelijk jouw prestaties met die van hen.">
+    <meta name="keywords" content="highscores, vrienden, gaming, scores, leaderboard, social gaming, online games, gaming community">
+    <meta name="author" content="raay">
+    <title>Highscores</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
