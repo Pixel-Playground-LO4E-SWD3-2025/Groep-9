@@ -21,10 +21,8 @@ require_once 'connection.php';
 $db = Database::getInstance();
 $conn = $db->getConnection();
 
-// Haal alle unieke games op
 $games = $conn->query("SELECT DISTINCT game_name FROM highscores")->fetchAll(PDO::FETCH_COLUMN);
 
-// Check of er op een game is geklikt
 $selected_game = $_GET['game'] ?? null;
 ?>
 <body>

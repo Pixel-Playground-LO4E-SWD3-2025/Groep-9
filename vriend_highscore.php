@@ -12,7 +12,6 @@ if (!isset($_POST['vriend_id'])) {
 
 $vriend_id = $_POST['vriend_id'];
 
-// Haal de gebruikersnaam en highscore op van de geselecteerde vriend
 $stmt = $conn->prepare("SELECT username, game_name, score FROM highscores WHERE user_id = :vriend_id");
 $stmt->bindParam(':vriend_id', $vriend_id, PDO::PARAM_INT);
 $stmt->execute();
@@ -55,3 +54,4 @@ $vriend = $stmt->fetchAll(PDO::FETCH_ASSOC);
 </section>
 </body>
 </html>
+<?php require_once 'footer.php'; ?>

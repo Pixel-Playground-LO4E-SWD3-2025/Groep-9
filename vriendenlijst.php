@@ -12,7 +12,6 @@ if (!isset($_SESSION['id'])) {
 
 $huidige_gebruiker_id = $_SESSION['id'];
 
-// Zoekopdracht verwerken voor vriendenlijst
 $zoek = $_GET['zoek'] ?? '';
 if ($zoek !== '') {
     $zoekterm = '%' . $zoek . '%';
@@ -93,11 +92,11 @@ $vrienden_lijst = $query->fetchAll(PDO::FETCH_ASSOC);
         <p>Je hebt nog geen vrienden geaccepteerd.</p>
     <?php endif; ?>
 
-    <!-- Zoekbalk onderaan -->
     <form class="vrienden-zoek-form" method="GET" action="">
         <input type="text" name="zoek" placeholder="Zoek vriend..." value="<?= isset($_GET['zoek']) ? htmlspecialchars($_GET['zoek']) : '' ?>">
         <button type="submit">Zoeken</button>
     </form>
 </section>
+<?php require_once 'footer.php'; ?>
 </body>
 </html>

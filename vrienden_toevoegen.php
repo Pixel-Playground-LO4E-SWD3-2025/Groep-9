@@ -8,11 +8,9 @@
     <meta name="keywords" content="vriend, add, request, social, network, game">
     <meta name="author" content="raay">
     <title>Toevoegen</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    
-</body>
-</html>
 <?php
 require_once 'connection.php';
 require_once 'header.php';
@@ -20,19 +18,16 @@ $db = Database::getInstance();
 $conn = $db->getConnection();
 $current_id = $_SESSION['id'] ?? 0;
 
-// Zoekformulier tonen
 echo '<form class="vrienden-zoek-form" method="GET" action="">
     <input type="text" name="zoek" placeholder="Zoek gebruiker..." value="' . (isset($_GET['zoek']) ? htmlspecialchars($_GET['zoek']) : '') . '">
     <button type="submit">Zoeken</button>
 </form>';
 
-// Vriendschapsverzoeken ophalen
 $stmt = $conn->prepare("SELECT v.*, u.username FROM vrienden v JOIN users u ON v.gebruiker_id = u.id WHERE v.vrienden_id = :id AND v.accepted = 0");
 $stmt->bindParam(':id', $current_id, PDO::PARAM_INT);
 $stmt->execute();
 $verzoeken = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-// Toon vriendschapsverzoeken
 if (count($verzoeken) > 0) {
     echo "<h3>Vriendschapsverzoeken:</h3><ul class='vriendenlijst'>";
     foreach ($verzoeken as $verzoek) {
@@ -55,7 +50,6 @@ if (count($verzoeken) > 0) {
     echo "<p>Je hebt geen nieuwe vriendschapsverzoeken.</p>";
 }
 
-// Zoekopdracht verwerken voor gebruikerslijst
 $zoek = $_GET['zoek'] ?? '';
 if ($zoek !== '') {
     $zoekterm = '%' . $zoek . '%';
@@ -69,7 +63,6 @@ if ($zoek !== '') {
 $stmt->execute();
 $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-// Toon alle gebruikers
 echo "<h3>Alle gebruikers:</h3><ul class='vriendenlijst'>";
 foreach ($users as $user) {
     echo "<li>";
@@ -83,3 +76,7 @@ foreach ($users as $user) {
     echo "</li>";
 }
 echo "</ul>";
+?>
+<?php require_once 'footer.php'; ?>
+</body>
+</html>

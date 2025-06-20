@@ -39,7 +39,6 @@ if (isset($_POST['username'] )) {
     
         try {
         $stmt = $conn->prepare("DELETE FROM vrienden WHERE username = :username");
-        // $stmt->bindParam(':id', $current_id);
         $stmt->bindParam(':username', $username);
         $stmt->execute();
         echo "<p>Vriendschap succesvol beëindigd!</p>";

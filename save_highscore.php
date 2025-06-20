@@ -21,7 +21,6 @@ session_start();
 $db = Database::getInstance();
 $conn = $db->getConnection();
 
-// Controleer of de gebruiker is ingelogd, anders anoniem
 if (isset($_SESSION['id']) && isset($_SESSION['username']) && !empty($_SESSION['username'])) {
     $userId = $_SESSION['id'];
     $username = $_SESSION['username'];
@@ -30,7 +29,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['username']) && !empty($_SESSION['
     $username = 'anoniem';
 }
 
-// Haal de ruwe POST data op
 $data = json_decode(file_get_contents("php://input"), true);
 
 if (isset($data['highscore']) && isset($data['gamename'])) {
@@ -38,7 +36,6 @@ if (isset($data['highscore']) && isset($data['gamename'])) {
     $gameName = $data['gamename'];
 
     try {
-        // Zoek bestaande highscore (let op: IS NULL voor anoniem)
         if ($userId === null) {
             $stmt = $conn->prepare("SELECT score FROM highscores WHERE user_id IS NULL AND game_name = :game_name AND username = 'anoniem'");
         } else {
@@ -50,7 +47,6 @@ if (isset($data['highscore']) && isset($data['gamename'])) {
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
         if (!$row) {
-            // Insert nieuwe highscore
             if ($userId === null) {
                 $stmt = $conn->prepare("INSERT INTO highscores (user_id, game_name, username, score) VALUES (NULL, :game_name, :username, :score)");
             } else {
@@ -63,7 +59,6 @@ if (isset($data['highscore']) && isset($data['gamename'])) {
             $stmt->execute();
             echo "Highscore opgeslagen!";
         } elseif ($newScore > $row['score']) {
-            // Update alleen als de nieuwe score hoger is
             if ($userId === null) {
                 $stmt = $conn->prepare("UPDATE highscores SET score = :score WHERE user_id IS NULL AND game_name = :game_name AND username = 'anoniem'");
             } else {

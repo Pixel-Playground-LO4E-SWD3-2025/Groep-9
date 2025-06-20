@@ -27,7 +27,6 @@ if (isset($_POST['vrienden_id']))
     $username = $_SESSION['username'];
     $vrienden_id = $_POST['vrienden_id'];
 
-    // Controleer eerst of deze combinatie al bestaat
     $checkStmt = $conn->prepare("SELECT COUNT(*) FROM vrienden WHERE gebruiker_id = :id AND vrienden_id = :vrienden_id");
     $checkStmt->bindParam(':id', $current_id);
     $checkStmt->bindParam(':vrienden_id', $vrienden_id);
