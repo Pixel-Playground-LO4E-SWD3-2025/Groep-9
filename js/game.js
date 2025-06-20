@@ -5,13 +5,20 @@ const gelijkcontrol = document.getElementById("resultaat");
 const playerScoreDisplay = document.getElementById("playerScoreDisplay");
 const computerScoreDisplay = document.getElementById("computerScoreDisplay");
 
-let playerScore =0;
-let computerScore =0;
+let playerScore = parseInt(localStorage.getItem('playerScore')) || 0;
+let computerScore = parseInt(localStorage.getItem('computerScore')) || 0; 
+
+
+if(playerScoreDisplay && computerScoreDisplay){
+playerScoreDisplay.textContent = playerScore; 
+computerScoreDisplay.textContent = computerScore;
+}
+
 
 function Game(playerChoice){
     console.log(playerChoice);
     const ComputerChoice = gokken[Math.floor(Math.random() * 3)];
-    let = result = "";
+    let  result = "";
 
     if(playerChoice === ComputerChoice){
         result = "HET IS GELIJKSPEL!";
@@ -45,12 +52,22 @@ function Game(playerChoice){
             gelijkcontrol.classList.add("greenText");
             playerScore++;
             playerScoreDisplay.textContent = playerScore;
+            localStorage.setItem('playerScore', playerScore);
             break;
         case "JE HEBT VERLOREN!":
             gelijkcontrol.classList.add("redText");
             computerScore++;
             computerScoreDisplay.textContent = computerScore;
+            localStorage.setItem('computerScore', computerScore);  
             break;
 
     }
+}
+function resetScores(){
+    playerScore = 0 ; 
+    computerScore = 0; 
+    playerScoreDisplay.textContent = playerScore; 
+    computerScoreDisplay.textContent = computerScore;
+    localStorage.setItem('playerScore', 0);
+    localStorage.setItem('computerScore', 0);
 }

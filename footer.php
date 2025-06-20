@@ -4,4 +4,3 @@
        <p id="Watermark">&copy;2025 PixelGame David Orozco & Raaysel</p>
       </article>
 </footer>
-</html>
