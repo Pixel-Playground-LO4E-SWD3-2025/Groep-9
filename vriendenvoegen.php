@@ -1,5 +1,6 @@
 <?php require_once 'connection.php'; 
-
+$db = Database::getInstance();
+$conn = $db->getConnection();
 session_start();
 
 

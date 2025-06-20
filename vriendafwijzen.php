@@ -1,6 +1,8 @@
 <?php require_once 'header.php';
 require_once 'connection.php';
 session_start();
+$db = Database::getInstance();
+$conn = $db->getConnection();
 if (isset($_SESSION['error'])) {
     echo '<article class="error">' . $_SESSION['error'] . '</article>';
     unset($_SESSION['error']);

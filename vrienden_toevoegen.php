@@ -1,7 +1,8 @@
 <?php
 require_once 'connection.php';
 require_once 'header.php';
-
+$db = Database::getInstance();
+$conn = $db->getConnection();
 $current_id = $_SESSION['id'] ?? 0;
 
 // Vriendschapsverzoeken ophalen
@@ -12,12 +13,11 @@ $verzoeken = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 // Toon vriendschapsverzoeken
 if (count($verzoeken) > 0) {
-    echo "<h3>Vriendschapsverzoeken:</h3><ul>";
+    echo "<h3>Vriendschapsverzoeken:</h3><ul class='vriendenlijst'>";
     foreach ($verzoeken as $verzoek) {
         echo "<li>";
         echo htmlspecialchars($verzoek['username']) . " wil vrienden worden.";
         echo "
-        
             <form action='acceptatie_wijzigen.php' method='POST' style='display:inline;'>
                 <input type='hidden' name='vrienden_id' value='" . htmlspecialchars($verzoek['username']) . "'>
                 <button type='submit'>Accepteer</button>
@@ -41,7 +41,7 @@ $stmt->execute();
 $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 // Toon alle gebruikers
-echo "<h3>Alle gebruikers:</h3><ul>";
+echo "<h3>Alle gebruikers:</h3><ul class='vriendenlijst'>";
 foreach ($users as $user) {
     echo "<li>";
     echo htmlspecialchars($user['username']);

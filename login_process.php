@@ -1,6 +1,8 @@
 <?php 
 session_start();
 require_once 'connection.php';
+$db = Database::getInstance();
+$conn = $db->getConnection();
 
 // var_dump($_POST); // Alleen gebruiken als je wilt debuggen, anders UITZETTEN!
 

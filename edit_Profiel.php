@@ -3,6 +3,8 @@
   <?php
   
     include_once 'connection.php';
+    $db = Database::getInstance();
+$conn = $db->getConnection();
      $user_id = $_SESSION['user_id'];
 
     $query = "SELECT * FROM users WHERE id = ?";

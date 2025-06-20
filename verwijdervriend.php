@@ -1,7 +1,8 @@
 <?php
 session_start();
 require_once 'connection.php';
-
+$db = Database::getInstance();
+$conn = $db->getConnection();
 if (!isset($_SESSION['id'])) {
     header("Location: inloggen.php");
     exit();

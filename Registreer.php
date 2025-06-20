@@ -1,7 +1,8 @@
 <?php require_once 'header.php'; ?>
 <?php 
 include_once 'connection.php'; 
-
+$db = Database::getInstance();
+$conn = $db->getConnection();
 if(isset($_POST['registreer'])){
 
     $gebruikersnaam = $_POST['gebruikersnaam'];

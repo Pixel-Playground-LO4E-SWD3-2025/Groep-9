@@ -2,7 +2,8 @@
 
 session_start();
 require_once 'connection.php';
-
+$db = Database::getInstance();
+$conn = $db->getConnection();
 
 
 if (isset($_SESSION['error'])){

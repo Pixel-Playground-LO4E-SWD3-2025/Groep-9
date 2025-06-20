@@ -1,6 +1,8 @@
 <?php
 session_start();
 require_once 'connection.php';
+$db = Database::getInstance();
+$conn = $db->getConnection();
 if (!isset($_SESSION['id'])) {
     header("Location: inloggen.php");
     exit();
@@ -33,6 +35,7 @@ $vrienden_lijst = $query->fetchAll(PDO::FETCH_ASSOC);
 <head>
     <meta charset="UTF-8">
     <title>Geaccepteerde vrienden</title>
+    <link rel="stylesheet" href="css/style.css">
      <video class="skycolor" autoplay loop muted src = "video/Skycolor.mp4"></video>
 </head>
 <body>
@@ -46,10 +49,15 @@ $vrienden_lijst = $query->fetchAll(PDO::FETCH_ASSOC);
             <?php foreach ($vrienden_lijst as $vriend): ?>
                 <li>
                     <?= htmlspecialchars($vriend['username']) ?>
+                    <form action="vriend_highscore.php" method="POST" style="display:inline;">
+                        <input type="hidden" name="vriend_id" value="<?= $vriend['vriend_id'] ?>">
+                        <button type="submit">Bekijk highscore</button>
+                    </form>
                     <form action="verwijdervriend.php" method="POST" style="display:inline;">
                         <input type="hidden" name="vriend_id" value="<?= $vriend['vriend_id'] ?>">
                         <button type="submit" onclick="return confirm('Weet je zeker dat je deze vriend wilt verwijderen?');">Verwijder</button>
                     </form>
+                    
                 </li>
             <?php endforeach; ?>
         </ul>
