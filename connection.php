@@ -12,7 +12,7 @@
  
         $servername="127.0.0.1";
         $username="root";
-        $password="";
+        $password="benji";
         $dbname="Project";
    
             $dsn = "mysql:host=$servername;dbname=$dbname;charset=utf8mb4";
