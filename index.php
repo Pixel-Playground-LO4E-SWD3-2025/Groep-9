@@ -6,7 +6,7 @@
        <article>
          <h1>Welcome to the Home Page</h1>
          <P> click to play the games <P>
-         <button class="ingang" onclick="location.href='index2.php'">Play Games</button>    
+         <button class="ingang" onclick="location.href='index2.php'">highscores</button>    
       </article>
       
       <button id="playAudio">▶️ Start Music</button>

@@ -1,0 +1,84 @@
+.highscores-scoreboard {
+    margin: 40px auto 0 auto;
+    padding: 24px 32px;
+    background: rgba(255,255,255,0.92);
+    border-radius: 16px;
+    box-shadow: 0 4px 32px rgba(0,0,0,0.08);
+    max-width: 700px;
+    width: fit-content;
+    min-width: 280px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-height: 500px;      /* Maximale hoogte */
+    overflow-y: auto;       /* Maak het geheel scrolbaar */
+}
+
+.highscores-table {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto 24px auto;
+    padding: 0;
+    list-style: none;
+    background: transparent;
+    border-radius: 12px;
+    /* Verwijder max-height en overflow-y hier! */
+}
+
+.highscores-header {
+    font-weight: bold;
+    background: #f2f2f2;
+    border-bottom: 2px solid #50c878ef;
+    display: block;
+    /* position: sticky;
+    top: 0;
+    z-index: 2; */
+}
+
+.highscores-row {
+    display: block;
+    padding: 8px 0;
+    border-bottom: 1px solid #e0e0e0;
+    background: none;
+    font-size: 1.1rem;
+    color: #222;
+}
+
+.highscores-row span {
+    display: block;
+    min-width: 0;
+    width: auto;
+    text-align: left;
+    font-size: 1.1rem;
+    color: #222;
+    margin-bottom: 2px;
+}
+
+.highscores-row span:last-child {
+    font-weight: bold;
+    color: #008d78;
+    margin-bottom: 0;
+}
+
+.highscores-title {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 24px;
+}
+
+.highscores-game-title {
+    font-size: 1.3rem;
+    margin: 24px 0 8px 0;
+    text-align: center;
+}
+
+.highscores-btn {
+    margin-top: 16px;
+    padding: 8px 24px;
+    border-radius: 8px;
+    border: none;
+    background: #50c878ef;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+}
