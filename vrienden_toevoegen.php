@@ -22,11 +22,14 @@ echo '<form class="vrienden-zoek-form" method="GET" action="">
     <input type="text" name="zoek" placeholder="Zoek gebruiker..." value="' . (isset($_GET['zoek']) ? htmlspecialchars($_GET['zoek']) : '') . '">
     <button type="submit">Zoeken</button>
 </form>';
-
+try {
 $stmt = $conn->prepare("SELECT v.*, u.username FROM vrienden v JOIN users u ON v.gebruiker_id = u.id WHERE v.vrienden_id = :id AND v.accepted = 0");
 $stmt->bindParam(':id', $current_id, PDO::PARAM_INT);
 $stmt->execute();
 $verzoeken = $stmt->fetchAll(PDO::FETCH_ASSOC);
+} catch (PDOException $e) {
+    echo "<p>Fout bij het ophalen van vriendschapsverzoeken: " . htmlspecialchars($e->getMessage()) . "</p>";
+}
 
 if (count($verzoeken) > 0) {
     echo "<h3>Vriendschapsverzoeken:</h3><ul class='vriendenlijst'>";

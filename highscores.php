@@ -20,8 +20,13 @@ require_once 'connection.php';
 
 $db = Database::getInstance();
 $conn = $db->getConnection();
-
+try {
 $games = $conn->query("SELECT DISTINCT game_name FROM highscores")->fetchAll(PDO::FETCH_COLUMN);
+}
+catch (PDOException $e) {
+    echo "Fout bij het ophalen van de games: " . $e->getMessage();
+    $games = [];
+    }
 
 $selected_game = $_GET['game'] ?? null;
 ?>

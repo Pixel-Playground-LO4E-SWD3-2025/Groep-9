@@ -26,12 +26,16 @@ if (isset($_POST['vrienden_id']))
     $current_id = $_SESSION['user_id'];
     $username = $_SESSION['username'];
     $vrienden_id = $_POST['vrienden_id'];
-
+    try{
     $checkStmt = $conn->prepare("SELECT COUNT(*) FROM vrienden WHERE gebruiker_id = :id AND vrienden_id = :vrienden_id");
     $checkStmt->bindParam(':id', $current_id);
     $checkStmt->bindParam(':vrienden_id', $vrienden_id);
     $checkStmt->execute();
     $exists = $checkStmt->fetchColumn();
+    } catch (PDOException $e) {
+        echo "<p>Fout bij het controleren van vriendschap: " . htmlspecialchars($e->getMessage()) . "</p>";
+        exit();
+    }
 
     if ($current_id && $vrienden_id) {
         if ($exists) {

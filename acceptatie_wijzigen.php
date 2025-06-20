@@ -27,11 +27,14 @@ if (!isset($_SESSION['id'])) {
 $current_id = $_SESSION['id'];
 $username = $_POST['username'] ?? 0;
 if (isset($username)) {
-
+try {
     $stmt = $conn->prepare("UPDATE vrienden SET accepted = 1 WHERE vrienden_id = :current_id AND username = :username");
     $stmt->bindParam(':current_id', $current_id, PDO::PARAM_INT);
     $stmt->bindParam(':username', $username, PDO::PARAM_INT);
     $stmt->execute();
+} catch (PDOException $e) {
+    echo "<p>Fout bij het accepteren van vriendschap: " . htmlspecialchars($e->getMessage()) . "</p>";
+    exit();
 
 header("Location: vriendenlijst.php");
 }
