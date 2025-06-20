@@ -10,22 +10,50 @@ if (!isset($_SESSION['id'])) {
 
 $huidige_gebruiker_id = $_SESSION['id'];
 
-// Haal alle geaccepteerde vrienden op (waar jij gebruiker of vriend bent)
-$query = $conn->prepare(
-    "SELECT gebruikersnaam.username, 
-            CASE 
-                WHEN vrienden.gebruiker_id = :huidige_gebruiker_id THEN vrienden.vrienden_id 
-                ELSE vrienden.gebruiker_id 
-            END AS vriend_id
-     FROM vrienden
-     JOIN users AS gebruikersnaam ON gebruikersnaam.id = CASE 
-                                WHEN vrienden.gebruiker_id = :huidige_gebruiker_id THEN vrienden.vrienden_id 
-                                ELSE vrienden.gebruiker_id 
-                            END
-     WHERE vrienden.accepted = 1 
-       AND (vrienden.gebruiker_id = :huidige_gebruiker_id OR vrienden.vrienden_id = :huidige_gebruiker_id)"
-);
-$query->bindParam(':huidige_gebruiker_id', $huidige_gebruiker_id, PDO::PARAM_INT);
+// Zoekformulier tonen
+echo '<form method="GET" action="">
+    <input type="text" name="zoek" placeholder="Zoek vriend..." value="' . (isset($_GET['zoek']) ? htmlspecialchars($_GET['zoek']) : '') . '">
+    <button type="submit">Zoeken</button>
+</form>';
+
+// Zoekopdracht verwerken voor vriendenlijst
+$zoek = $_GET['zoek'] ?? '';
+if ($zoek !== '') {
+    $zoekterm = '%' . $zoek . '%';
+    $query = $conn->prepare(
+        "SELECT gebruikersnaam.username, 
+                CASE 
+                    WHEN vrienden.gebruiker_id = :huidige_gebruiker_id THEN vrienden.vrienden_id 
+                    ELSE vrienden.gebruiker_id 
+                END AS vriend_id
+         FROM vrienden
+         JOIN users AS gebruikersnaam ON gebruikersnaam.id = CASE 
+                                    WHEN vrienden.gebruiker_id = :huidige_gebruiker_id THEN vrienden.vrienden_id 
+                                    ELSE vrienden.gebruiker_id 
+                                END
+         WHERE vrienden.accepted = 1 
+           AND (vrienden.gebruiker_id = :huidige_gebruiker_id OR vrienden.vrienden_id = :huidige_gebruiker_id)
+           AND gebruikersnaam.username LIKE :zoekterm"
+    );
+    $query->bindParam(':huidige_gebruiker_id', $huidige_gebruiker_id, PDO::PARAM_INT);
+    $query->bindParam(':zoekterm', $zoekterm, PDO::PARAM_STR);
+} else {
+    $query = $conn->prepare(
+        "SELECT gebruikersnaam.username, 
+                CASE 
+                    WHEN vrienden.gebruiker_id = :huidige_gebruiker_id THEN vrienden.vrienden_id 
+                    ELSE vrienden.gebruiker_id 
+                END AS vriend_id
+         FROM vrienden
+         JOIN users AS gebruikersnaam ON gebruikersnaam.id = CASE 
+                                    WHEN vrienden.gebruiker_id = :huidige_gebruiker_id THEN vrienden.vrienden_id 
+                                    ELSE vrienden.gebruiker_id 
+                                END
+         WHERE vrienden.accepted = 1 
+           AND (vrienden.gebruiker_id = :huidige_gebruiker_id OR vrienden.vrienden_id = :huidige_gebruiker_id)"
+    );
+    $query->bindParam(':huidige_gebruiker_id', $huidige_gebruiker_id, PDO::PARAM_INT);
+}
 $query->execute();
 $vrienden_lijst = $query->fetchAll(PDO::FETCH_ASSOC);
 ?>
@@ -36,7 +64,7 @@ $vrienden_lijst = $query->fetchAll(PDO::FETCH_ASSOC);
     <meta charset="UTF-8">
     <title>Geaccepteerde vrienden</title>
     <link rel="stylesheet" href="css/style.css">
-     <video class="skycolor" autoplay loop muted src = "video/Skycolor.mp4"></video>
+    <video class="skycolor" autoplay loop muted src="video/Skycolor.mp4"></video>
 </head>
 <body>
 <section class="vriendenlijst-container">
@@ -57,13 +85,11 @@ $vrienden_lijst = $query->fetchAll(PDO::FETCH_ASSOC);
                         <input type="hidden" name="vriend_id" value="<?= $vriend['vriend_id'] ?>">
                         <button type="submit" onclick="return confirm('Weet je zeker dat je deze vriend wilt verwijderen?');">Verwijder</button>
                     </form>
-                    
                 </li>
             <?php endforeach; ?>
         </ul>
     <?php else: ?>
         <p>Je hebt nog geen vrienden geaccepteerd.</p>
     <?php endif; ?>
-    </section>
-</body>
-</html>
+</section>
+</body> 

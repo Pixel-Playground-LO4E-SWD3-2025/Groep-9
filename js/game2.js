@@ -1,7 +1,8 @@
-const canvas = document.getElementById('game');
-const ctx = canvas.getContext('2d');
+const canvas = document.getElementById("game");
+const ctx = canvas.getContext("2d");
 
 let score;
+let gamename = "blockRunner";
 let scoreText;
 let highscore;
 let highscoreText;
@@ -11,15 +12,15 @@ let obstacles = [];
 let gameSpeed;
 let keys = {};
 
-document.addEventListener('keydown', function (evt) {
+document.addEventListener("keydown", function (evt) {
   keys[evt.code] = true;
 });
-document.addEventListener('keyup', function (evt) {
+document.addEventListener("keyup", function (evt) {
   keys[evt.code] = false;
 });
 
 class Player {
-  constructor (x, y, w, h, c) {
+  constructor(x, y, w, h, c) {
     this.x = x;
     this.y = y;
     this.w = w;
@@ -33,14 +34,14 @@ class Player {
     this.jumpTimer = 0;
   }
 
-  Animate () {
-    if (keys['Space'] || keys['KeyW']) {
+  Animate() {
+    if (keys["Space"] || keys["KeyW"]) {
       this.Jump();
     } else {
       this.jumpTimer = 0;
     }
 
-    if (keys['ShiftLeft'] || keys['KeyS']) {
+    if (keys["ShiftLeft"] || keys["KeyS"]) {
       this.h = this.originalHeight / 2;
     } else {
       this.h = this.originalHeight;
@@ -60,17 +61,17 @@ class Player {
     this.Draw();
   }
 
-  Jump () {
+  Jump() {
     if (this.grounded && this.jumpTimer == 0) {
       this.jumpTimer = 1;
       this.dy = -this.jumpForce;
     } else if (this.jumpTimer > 0 && this.jumpTimer < 15) {
       this.jumpTimer++;
-      this.dy = -this.jumpForce - (this.jumpTimer / 50);
+      this.dy = -this.jumpForce - this.jumpTimer / 50;
     }
   }
 
-  Draw () {
+  Draw() {
     ctx.beginPath();
     ctx.fillStyle = this.c;
     ctx.fillRect(this.x, this.y, this.w, this.h);
@@ -79,7 +80,7 @@ class Player {
 }
 
 class Obstacle {
-  constructor (x, y, w, h, c) {
+  constructor(x, y, w, h, c) {
     this.x = x;
     this.y = y;
     this.w = w;
@@ -89,13 +90,13 @@ class Obstacle {
     this.dx = -gameSpeed;
   }
 
-  Update () {
+  Update() {
     this.x += this.dx;
     this.Draw();
     this.dx = -gameSpeed;
   }
 
-  Draw () {
+  Draw() {
     ctx.beginPath();
     ctx.fillStyle = this.c;
     ctx.fillRect(this.x, this.y, this.w, this.h);
@@ -104,7 +105,7 @@ class Obstacle {
 }
 
 class Text {
-  constructor (t, x, y, a, c, s) {
+  constructor(t, x, y, a, c, s) {
     this.t = t;
     this.x = x;
     this.y = y;
@@ -113,7 +114,7 @@ class Text {
     this.s = s;
   }
 
-  Draw () {
+  Draw() {
     ctx.beginPath();
     ctx.fillStyle = this.c;
     ctx.font = this.s + "px sans-serif";
@@ -123,10 +124,16 @@ class Text {
   }
 }
 
-function SpawnObstacle () {
+function SpawnObstacle() {
   let size = RandomIntInRange(180, 70);
   let type = RandomIntInRange(0, 1);
-  let obstacle = new Obstacle(canvas.width + size, canvas.height - size, size, size, '#ff0000');
+  let obstacle = new Obstacle(
+    canvas.width + size,
+    canvas.height - size,
+    size,
+    size,
+    "#ff0000"
+  );
 
   if (type == 1) {
     obstacle.y -= player.originalHeight - 10;
@@ -134,12 +141,11 @@ function SpawnObstacle () {
   obstacles.push(obstacle);
 }
 
-
-function RandomIntInRange (min, max) {
+function RandomIntInRange(min, max) {
   return Math.round(Math.random() * (max - min) + min);
 }
 
-function Start () {
+function Start() {
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
 
@@ -150,21 +156,28 @@ function Start () {
 
   score = 0;
   highscore = 0;
-  if (localStorage.getItem('highscore')) {
-    highscore = localStorage.getItem('highscore');
+  if (localStorage.getItem("highscore")) {
+    highscore = localStorage.getItem("highscore");
   }
 
-  player = new Player(25, 0, 70, 70, '#92DC00');
+  player = new Player(25, 0, 70, 70, "#92DC00");
 
   scoreText = new Text("Score: " + score, 25, 25, "left", "#212121", "20");
-  highscoreText = new Text("Highscore: " + highscore, canvas.width - 25, 25, "right", "#212121", "20");
+  highscoreText = new Text(
+    "Highscore: " + highscore,
+    canvas.width - 25,
+    25,
+    "right",
+    "#212121",
+    "20"
+  );
 
   requestAnimationFrame(Update);
 }
 
 let initialSpawnTimer = 420;
 let spawnTimer = initialSpawnTimer;
-function Update () {
+function Update() {
   requestAnimationFrame(Update);
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 
@@ -173,12 +186,11 @@ function Update () {
     SpawnObstacle();
     console.log(obstacles);
     spawnTimer = initialSpawnTimer - gameSpeed * 8;
-    
+
     if (spawnTimer < 60) {
       spawnTimer = 60;
     }
   }
-
 
   for (let i = 0; i < obstacles.length; i++) {
     let o = obstacles[i];
@@ -193,11 +205,25 @@ function Update () {
       player.y < o.y + o.h &&
       player.y + player.h > o.y
     ) {
+      // Send it to PHP using fetch
+fetch("save_highscore.php", {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify({ highscore: score, gamename: gamename }),
+})
+        .then((response) => response.text())
+        .then((data) => {
+          console.log("Success:", data);
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+        });
+
       obstacles = [];
       score = 0;
       spawnTimer = initialSpawnTimer;
       gameSpeed = 3;
-      window.localStorage.setItem('highscore', highscore);
+      window.localStorage.setItem("highscore", highscore);
     }
 
     o.Update();
@@ -213,9 +239,10 @@ function Update () {
     highscore = score;
     highscoreText.t = "Highscore: " + highscore;
   }
-  
+
   highscoreText.Draw();
 
-  gameSpeed += 0.003 * 1,5;
-} 
+  (gameSpeed += 0.003 * 1), 5;  
+}
+
 Start();

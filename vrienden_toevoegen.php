@@ -5,6 +5,12 @@ $db = Database::getInstance();
 $conn = $db->getConnection();
 $current_id = $_SESSION['id'] ?? 0;
 
+// Zoekformulier tonen
+echo '<form method="GET" action="">
+    <input type="text" name="zoek" placeholder="Zoek gebruiker..." value="' . (isset($_GET['zoek']) ? htmlspecialchars($_GET['zoek']) : '') . '">
+    <button type="submit">Zoeken</button>
+</form>';
+
 // Vriendschapsverzoeken ophalen
 $stmt = $conn->prepare("SELECT v.*, u.username FROM vrienden v JOIN users u ON v.gebruiker_id = u.id WHERE v.vrienden_id = :id AND v.accepted = 0");
 $stmt->bindParam(':id', $current_id, PDO::PARAM_INT);
@@ -34,9 +40,17 @@ if (count($verzoeken) > 0) {
     echo "<p>Je hebt geen nieuwe vriendschapsverzoeken.</p>";
 }
 
-// Alle andere gebruikers ophalen
-$stmt = $conn->prepare("SELECT id, username FROM users WHERE id != :current_id");
-$stmt->bindParam(':current_id', $current_id, PDO::PARAM_INT);
+// Zoekopdracht verwerken voor gebruikerslijst
+$zoek = $_GET['zoek'] ?? '';
+if ($zoek !== '') {
+    $zoekterm = '%' . $zoek . '%';
+    $stmt = $conn->prepare("SELECT id, username FROM users WHERE id != :current_id AND username LIKE :zoekterm");
+    $stmt->bindParam(':current_id', $current_id, PDO::PARAM_INT);
+    $stmt->bindParam(':zoekterm', $zoekterm, PDO::PARAM_STR);
+} else {
+    $stmt = $conn->prepare("SELECT id, username FROM users WHERE id != :current_id");
+    $stmt->bindParam(':current_id', $current_id, PDO::PARAM_INT);
+}
 $stmt->execute();
 $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
@@ -54,4 +68,3 @@ foreach ($users as $user) {
     echo "</li>";
 }
 echo "</ul>";
-?>
