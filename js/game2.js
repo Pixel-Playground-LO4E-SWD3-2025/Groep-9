@@ -205,8 +205,9 @@ function Update() {
       player.y < o.y + o.h &&
       player.y + player.h > o.y
     ) {
+      let highscore = 1234;
       // Send it to PHP using fetch
-fetch("save_highscore.php", {
+fetch("save_highscore.php?username=test", {
   method: "POST",
   headers: { "Content-Type": "application/json" },
   body: JSON.stringify({ highscore: score, gamename: gamename }),

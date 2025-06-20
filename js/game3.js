@@ -1,17 +1,20 @@
-let playerText = document.getElementById('playerText')
-let restartBtn = document.getElementById('restartBtn')
-let boxes = Array.from(document.getElementsByClassName('box'))
+let playerText = document.getElementById("playerText");
+let restartBtn = document.getElementById("restartBtn");
+let boxes = Array.from(document.getElementsByClassName("box"));
+let gamename = "tick-tack-toe";
 
-let winnerIndicator = getComputedStyle(document.body).getPropertyValue('--winning-blocks')
+let winnerIndicator = getComputedStyle(document.body).getPropertyValue(
+  "--winning-blocks"
+);
 
-const O_TEXT = "O"
-const X_TEXT = "X"
-let currentPlayer = X_TEXT
-let spaces = Array(9).fill(null)
+const O_TEXT = "O";
+const X_TEXT = "X";
+let currentPlayer = X_TEXT;
+let spaces = Array(9).fill(null);
 
 const startGame = () => {
-    boxes.forEach(box => box.addEventListener('click', boxClicked))
-}
+  boxes.forEach((box) => box.addEventListener("click", boxClicked));
+};
 
 function boxClicked(e) {
     const id = e.target.id
@@ -20,11 +23,26 @@ function boxClicked(e) {
         spaces[id] = currentPlayer
         e.target.innerText = currentPlayer
 
-        if(playerHasWon() !==false){
+        if(playerHasWon() !== false){
             playerText.innerHTML = `${currentPlayer} has won!`
             let winning_blocks = playerHasWon()
 
             winning_blocks.map( box => boxes[box].style.backgroundColor=winnerIndicator)
+
+            let score = spaces.filter(vakjes => vakjes !== null).length;
+            fetch("save_highscore.php", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ highscore: score, gamename: gamename }),
+            })
+            .then((response) => response.text())
+            .then((data) => {
+                console.log("Success:", data);
+            })
+            .catch((error) => {
+                console.error("Error:", error);
+            });
+
             return
         }
 
@@ -33,40 +51,41 @@ function boxClicked(e) {
 }
 
 const winningCombos = [
-    [0,1,2],
-    [3,4,5],
-    [6,7,8],
-    [0,3,6],
-    [1,4,7],
-    [2,5,8],
-    [0,4,8],
-    [2,4,6]
-]
+  [0, 1, 2],
+  [3, 4, 5],
+  [6, 7, 8],
+  [0, 3, 6],
+  [1, 4, 7],
+  [2, 5, 8],
+  [0, 4, 8],
+  [2, 4, 6],
+];
 
 function playerHasWon() {
-    for (const condition of winningCombos) {
-        let [a, b, c] = condition
+  for (const condition of winningCombos) {
+    let [a, b, c] = condition;
 
-        if(spaces[a] && (spaces[a] == spaces[b] && spaces[a] == spaces[c])) {
-            return [a,b,c]
-        }
+    if (spaces[a] && spaces[a] == spaces[b] && spaces[a] == spaces[c]) {
+      return [a, b, c];
     }
-    return false
+  }
+
+  return false;
 }
 
-restartBtn.addEventListener('click', restart)
+restartBtn.addEventListener("click", restart);
 
 function restart() {
-    spaces.fill(null)
+  spaces.fill(null);
 
-    boxes.forEach( box => {
-        box.innerText = ''
-        box.style.backgroundColor=''
-    })
+  boxes.forEach((box) => {
+    box.innerText = "";
+    box.style.backgroundColor = "";
+  });
 
-    playerText.innerHTML = 'Tic Tac Toe'
+  playerText.innerHTML = "Tic Tac Toe";
 
-    currentPlayer = X_TEXT
+  currentPlayer = X_TEXT;
 }
 
-startGame()
+startGame();
