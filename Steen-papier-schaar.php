@@ -24,6 +24,7 @@
                 <span id="computerScoreDisplay">0</span>
             </h4>
          </article>
+         <button class="Reset" onclick ="resetScores()">Reset Score</button>
         </section>
     </main>
 </body>
