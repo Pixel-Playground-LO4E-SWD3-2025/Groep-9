@@ -5,7 +5,7 @@ if(!isset($_SESSION['user_id'])){
     header("Location: inloggen.php");
     exit();
 }   
-
+// van het inloggen naar deze pagina worden gestuurd// 
 ?>
 <body>
     <main>

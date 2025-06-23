@@ -2,6 +2,7 @@
 
 session_start();
 require_once 'connection.php';
+//toegang database maar 1  voor de hele website// 
 $db = Database::getInstance();
 $conn = $db->getConnection();
 

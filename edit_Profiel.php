@@ -4,8 +4,8 @@
   
     include_once 'connection.php';
     $db = Database::getInstance();
-$conn = $db->getConnection();
-     $user_id = $_SESSION['user_id'];
+    $conn = $db->getConnection();
+    $user_id = $_SESSION['user_id'];
 
     $query = "SELECT * FROM users WHERE id = ?";
     $stmt = $conn->prepare($query);
@@ -25,7 +25,9 @@ $conn = $db->getConnection();
       $upload_dir = 'uploads/profile_photos/';
 
       if (!is_dir($upload_dir)){ // controleer of de map bestaat
-        mkdir($upload_dir, 0755, true); //Maakt de map aan als deze niet bestaat
+        mkdir($upload_dir, 0755, true); //Maakt de map aan als deze niet bestaat 
+        //0755 verwijst naar het instellen van bestandsrechten op een directory eigenaar kan alles aanpassen en kijker heeft alleen lees 
+        //en kijk rechten geen schrijf rechten 
 
       }
       $allowed_types =['image/jpeg', 'image/jpg' , 'image/png', 'image/gif', 'image/webp'];
@@ -86,7 +88,7 @@ $conn = $db->getConnection();
    }
 }
 
-    
+    //veilig in browser dankzij htmlspecialchars// 
 
     ?>
    <body>
@@ -98,7 +100,7 @@ $conn = $db->getConnection();
                <label class="Label-menu">Profile Photo:</label>
                <input class="Input-menu" type="file" name="profile_photo" accept="image/*"><br>
                <label class="Label-menu">Name:</label>
-               <input class="Input-menu" type="text" name="name" value="<?php echo htmlspecialchars($user['username']); ?>" required><br>
+               <input class="Input-menu" type="text" name="name" value="<?php echo htmlspecialchars($user['username']); ?>" required><br> 
                <label class="Label-menu">Email:</label>
                <input class="Input-menu"type="email" name="email" value="<?php echo htmlspecialchars($user['email']); ?>" required><br>
                <label class="Label-menu">Password:</label>

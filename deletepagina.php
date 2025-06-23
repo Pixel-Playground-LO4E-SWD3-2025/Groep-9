@@ -16,7 +16,7 @@ if(isset($_POST['Confirm_delete']) && $_POST['Confirm_delete'] == 'Ja'){
 
 try{
   $deleteUser = "DELETE FROM users WHERE id = ?";
-  $stmt = $conn->prepare($deleteUser);
+  $stmt = $conn->prepare($deleteUser); // verwijzen naar een prepared statement later uitvoeren//
   $stmt->execute([$user_id]);
   session_destroy();
   header('location: index.php');
@@ -70,4 +70,7 @@ if(isset($_POST['Confirm_delete']) && $_POST['Confirm_delete'] == 'Nee'){
 //&& controleert of beide voorwaarden waar zijn (logische EN-operator)//
 // || = OF een van beide moet waar zijn //
 // ! = Niet maak waar onwaar en andersom //
+// $stmt verwijzen naar een prepared statement. Dit is een SQL-instructie die van tevoren is voorbereid en later kan worden uitgevoerd
+//  met verschillende waarden. 
+// Dit maakt het efficiënter en veiliger, vooral bij herhaalde queries//
 ?> 
